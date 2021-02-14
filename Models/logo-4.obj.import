@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/logo-4.obj-5b589292fb79fbca622cd92579e07daa.mesh"
+
+[deps]
+
+files=[ "res://.import/logo-4.obj-5b589292fb79fbca622cd92579e07daa.mesh" ]
+
+source_file="res://Models/logo-4.obj"
+dest_files=[ "res://.import/logo-4.obj-5b589292fb79fbca622cd92579e07daa.mesh", "res://.import/logo-4.obj-5b589292fb79fbca622cd92579e07daa.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.09, 0.09, 0.09 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/globe_base.obj-f77bd765f4cda28fe8e44588b57ceb6c.mesh"
+
+[deps]
+
+files=[ "res://.import/globe_base.obj-f77bd765f4cda28fe8e44588b57ceb6c.mesh" ]
+
+source_file="res://Models/globe_base.obj"
+dest_files=[ "res://.import/globe_base.obj-f77bd765f4cda28fe8e44588b57ceb6c.mesh", "res://.import/globe_base.obj-f77bd765f4cda28fe8e44588b57ceb6c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.15, 0.15, 0.15 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

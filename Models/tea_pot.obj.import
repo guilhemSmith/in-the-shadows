@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/tea_pot.obj-7699b95f9f1e4cce59d1abf5dc4f01f4.mesh"
+
+[deps]
+
+files=[ "res://.import/tea_pot.obj-7699b95f9f1e4cce59d1abf5dc4f01f4.mesh" ]
+
+source_file="res://Models/tea_pot.obj"
+dest_files=[ "res://.import/tea_pot.obj-7699b95f9f1e4cce59d1abf5dc4f01f4.mesh", "res://.import/tea_pot.obj-7699b95f9f1e4cce59d1abf5dc4f01f4.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.3, 0.3, 0.3 )
+offset_mesh=Vector3( 0, -0.3, 0 )
+optimize_mesh=true
