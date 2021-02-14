@@ -12,12 +12,12 @@ ambient_light_color = Color( 0.12549, 0.117647, 0.141176, 1 )
 [node name="Level" type="Spatial"]
 
 [node name="WallShadows" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.919308, 0.0789442, -1.04572 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.919308, 0.0789442, -2.04572 )
 mesh = SubResource( 1 )
 material/0 = null
 
 [node name="WallUnused" type="MeshInstance" parent="."]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 5.91931, 0.0789442, 3.95428 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 5.91931, 0.0789442, 2.95428 )
 mesh = SubResource( 1 )
 material/0 = null
 
@@ -37,3 +37,10 @@ spot_angle = 30.774
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.148754, 0.975282, -0.163393, -0.148754, 0.18542, 0.971335, 0.977622, -0.120184, 0.172659, 0, 0, 3.83527 )
+light_color = Color( 0.509804, 0.443137, 0.737255, 1 )
+light_energy = 0.01
+shadow_enabled = true
+shadow_reverse_cull_face = true
