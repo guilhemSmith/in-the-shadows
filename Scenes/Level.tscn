@@ -29,7 +29,7 @@ transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -2, 0, 3.5 
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 6 )
-light_color = Color( 0.835294, 0.760784, 0.643137, 1 )
+light_color = Color( 0.898039, 0.721569, 0.564706, 1 )
 shadow_enabled = true
 shadow_reverse_cull_face = true
 spot_range = 13.0683
@@ -40,7 +40,7 @@ environment = SubResource( 2 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.148754, 0.975282, -0.163393, -0.148754, 0.18542, 0.971335, 0.977622, -0.120184, 0.172659, 0, 0, 3.83527 )
-light_color = Color( 0.509804, 0.443137, 0.737255, 1 )
-light_energy = 0.01
+light_color = Color( 0.682353, 0.654902, 0.772549, 1 )
+light_energy = 0.25
 shadow_enabled = true
 shadow_reverse_cull_face = true
