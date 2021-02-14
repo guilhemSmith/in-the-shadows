@@ -4,6 +4,7 @@ export var enable_horizontal: bool = true
 export var horizontal_rot: int = 90
 export var horizontal_rot_goal: int = 0
 export var horizontal_rot_margin: int = 5
+export var horizontal_rot_scale: float = 0.5
 
 export var ease_duration: float = 1.0
 
@@ -28,8 +29,7 @@ func _input(event):
 		if event is InputEventMouseButton and event.get_button_index() == 1:
 			rotating = event.is_pressed()
 		if rotating and event is InputEventMouseMotion:
-			print(event.relative.x)
-			horizontal_rot += event.relative.x / 2
+			horizontal_rot += event.relative.x * horizontal_rot_scale
 			tween_node.interpolate_property(
 				self,
 				"rotation_degrees",
