@@ -17,6 +17,8 @@ export var vertical_rot_scale: float = 0.3
 export var ease_duration: float = 1.0
 export var validation_duration: float = 1.0
 
+#onready var FORWARD = -Vector3(-4.5, 0, 1.5).normalized()
+
 onready var FORWARD = transform.basis.z.normalized()
 onready var UP = transform.basis.y.normalized()
 var selected: bool = true
