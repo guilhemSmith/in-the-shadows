@@ -15,9 +15,11 @@ export var vertical_rot_margin: int = 5
 export var vertical_rot_scale: float = 0.3
 
 export var enable_translations: bool = true
-export var trans_horizontal: int = 0
-export var trans_vertical: int = 0
-export var trans_scale: float = 0.025
+export var trans_horizontal: float = 0
+export var trans_vertical: float = 0
+export var trans_scale: float = 0.05
+export var trans_limit_x: float = 1.5
+export var trans_limit_y: float = 1.0
 
 export var ease_duration: float = 1.0
 export var validation_duration: float = 1.0
@@ -59,9 +61,13 @@ func _input(event):
 				elif not timer_validation.is_stopped() and not valid:
 					timer_validation.stop()
 			if translating:
-				trans_horizontal = event.relative.x
-				trans_vertical = -event.relative.y
-				translate(Vector3(trans_horizontal, trans_vertical, 0).normalized() * trans_scale)
+				var trans = Vector3(event.relative.x, -event.relative.y, 0).normalized() * trans_scale
+				trans.x = clamp(trans.x, -trans_limit_x - trans_horizontal, trans_limit_x -trans_horizontal)
+				trans.y = clamp(trans.y, -trans_limit_y - trans_vertical, trans_limit_y -trans_vertical)
+				translate(trans)
+				trans_horizontal += trans.x
+				trans_vertical += trans.y
+				
 
 func update_rot():
 	rotate(UP, deg2rad(horizontal_rot))
