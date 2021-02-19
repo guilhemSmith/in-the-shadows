@@ -12,27 +12,26 @@ ambient_light_color = Color( 0.12549, 0.117647, 0.141176, 1 )
 [node name="Level" type="Spatial"]
 
 [node name="WallShadows" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -1, 0, -5 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -1, 0, -6 )
 mesh = SubResource( 1 )
 material/0 = null
 
 [node name="WallUnused" type="MeshInstance" parent="."]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 7, 0, 3 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 7, 0, 2 )
 mesh = SubResource( 1 )
 material/0 = null
 
 [node name="PuzzlePiece" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -2, 0, 4 )
+transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -2, 0, 3 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 light_color = Color( 0.898039, 0.721569, 0.564706, 1 )
 shadow_enabled = true
 shadow_reverse_cull_face = true
-spot_range = 16.0
+spot_range = 15.897
 spot_angle = 42.0439
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
