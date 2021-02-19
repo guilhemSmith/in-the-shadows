@@ -26,8 +26,9 @@ material/0 = null
 
 [node name="PuzzlePiece" parent="." instance=ExtResource( 3 )]
 mesh = ExtResource( 1 )
-rot_goal = Basis( 0.996, -0.087, 0, 0, 0, 1, 0.087, 0.996, 0 )
-rot_margin = 2.5
+rot_margin = 0.004
+quat_start = Quat( 0.838, 0.513, -0.029, 0.187 )
+quat_goal = Quat( 0.739, -0.026, 0.039, 0.672 )
 enable_translations = false
 
 [node name="Camera" type="Camera" parent="."]

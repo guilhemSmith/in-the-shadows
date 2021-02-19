@@ -5,9 +5,10 @@ signal rotation_valid
 export var mesh: Resource = null
 
 var rot_basis: Basis = Basis(Quat.IDENTITY)
-export var rot_goal: Basis = Basis(Quat.IDENTITY)
-export var rot_start: Basis = Basis(Quat.IDENTITY)
-export var rot_margin: float = 0.25
+export var rot_margin: float = 0.002
+
+export var quat_start : Quat = Quat.IDENTITY
+export var quat_goal : Quat = Quat.IDENTITY
 
 export var enable_horizontal: bool = true
 export var h_scale: float = 0.01
@@ -17,7 +18,7 @@ export var v_scale: float = 0.01
 
 export var enable_translations: bool = true
 export var t_offset: Vector3 = Vector3.ZERO
-export var t_scale: float = 0.05
+export var t_scale: float = 0.025
 export var t_limit_x: float = 1.5
 export var t_limit_y: float = 1.0
 
@@ -34,9 +35,8 @@ func _ready():
 	if model != null:
 		model.set_mesh(mesh)
 
-	rot_goal = rot_goal
-	rot_start = rot_start
-	rot_basis = rot_start
+	quat_goal = quat_goal.normalized()
+	rot_basis = Basis(quat_start.normalized())
 	model.transform.basis = rot_basis
 
 func _process(delta):
@@ -48,6 +48,9 @@ func _process(delta):
 
 func _input(event):
 	if selected:
+		if event.is_action_pressed("dev_debug"):
+			print(rot_basis.get_rotation_quat())
+			print((rot_basis.get_rotation_quat() - quat_goal).length_squared())
 		if event is InputEventMouseButton and event.get_button_index() == 1:
 			if Input.is_action_pressed("player_ctrl"):
 				rotating = false
@@ -62,6 +65,8 @@ func _input(event):
 				if enable_vertical:
 					rot_basis = rot_basis.rotated(Vector3.FORWARD, event.relative.y * v_scale)
 				if timer_validation.is_stopped() and is_valid():
+					print(rot_basis.get_rotation_quat() - quat_goal)
+					print(rot_basis.get_rotation_quat(), quat_goal)
 					timer_validation.start(validation_delay)
 				elif not timer_validation.is_stopped() and not is_valid():
 					timer_validation.stop()
@@ -74,17 +79,12 @@ func select(select: bool):
 	selected = select
 
 func solve():
-	print(rot_basis, rot_goal)
-	rot_basis = rot_goal
+	print(rot_basis, Basis(quat_goal))
+	rot_basis = Basis(quat_goal)
 
 func is_valid():
-	var x = rot_goal.x - rot_basis.x
-	var y = rot_goal.y - rot_basis.y
-	var z = rot_goal.z - rot_basis.z
-	return x.length() < rot_margin and y.length() < rot_margin and z.length() < rot_margin
+	return (rot_basis.get_rotation_quat() - quat_goal).length_squared() < rot_margin
 
 func _on_Timer_timeout():
 	emit_signal("rotation_valid")
-#	enable_horizontal = false
-#	enable_vertical = false
 	pass
