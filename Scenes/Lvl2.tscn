@@ -27,20 +27,20 @@ material/0 = null
 [node name="PuzzlePiece" parent="." instance=ExtResource( 3 )]
 mesh = ExtResource( 1 )
 rot_margin = 0.004
-quat_start = Quat( 0.838, 0.513, -0.029, 0.187 )
-quat_goal = Quat( 0.739, -0.026, 0.039, 0.672 )
+quat_start = Quat( 0.897629, -0.368258, 0.24217, 0.0010007 )
+quat_goal = Quat( 0.739036, -0.0260013, 0.0390019, 0.672033 )
 enable_translations = false
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -2, 0, 3 )
+transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -2.9, -0.5, 3 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0215034, 4.76837e-07, 7.99521 )
 light_color = Color( 0.898039, 0.721569, 0.564706, 1 )
 shadow_enabled = true
 shadow_reverse_cull_face = true
-spot_range = 15.897
-spot_angle = 42.0439
+spot_range = 19.0
+spot_angle = 26.115
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )

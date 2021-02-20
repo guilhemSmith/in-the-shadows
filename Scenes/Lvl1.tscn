@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://Materials/hiearoglyphs.tres" type="Material" id=1]
 [ext_resource path="res://Scripts/Puzzle.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/PuzzlePiece.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Models/tea_pot.obj" type="ArrayMesh" id=4]
 
 [sub_resource type="PlaneMesh" id=1]
-size = Vector2( 16, 18 )
+size = Vector2( 30, 30 )
 
 [sub_resource type="Environment" id=2]
 background_mode = 1
@@ -15,31 +16,36 @@ ambient_light_color = Color( 0.12549, 0.117647, 0.141176, 1 )
 script = ExtResource( 2 )
 
 [node name="WallShadows" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -1, 0, -6 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 4.9, 0, -8 )
 mesh = SubResource( 1 )
-material/0 = null
+material/0 = ExtResource( 1 )
 
 [node name="WallUnused" type="MeshInstance" parent="."]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 7, 0, 2 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 13.9, 0, 6.9 )
+visible = false
 mesh = SubResource( 1 )
-material/0 = null
+material/0 = ExtResource( 1 )
 
 [node name="PuzzlePiece" parent="." instance=ExtResource( 3 )]
 mesh = ExtResource( 4 )
-quat_start = Quat( 0, 0.3, 0, 0.95 )
+quat_start = Quat( 0.0480783, 0.720173, 0, 0.692127 )
+quat_goal = Quat( 0.05, 0.09, 0, 0.995 )
 enable_vertical = false
 enable_translations = false
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -2, 0, 3 )
+transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -2, -1, 3 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+transform = Transform( 0.997018, 0, -0.0771715, 0, 1, 0, 0.0771715, 0, 0.997018, 0.6, 0, 3 )
 light_color = Color( 0.898039, 0.721569, 0.564706, 1 )
 shadow_enabled = true
+shadow_color = Color( 0.12549, 0.117647, 0.141176, 1 )
 shadow_reverse_cull_face = true
-spot_range = 15.897
-spot_angle = 42.0439
+spot_range = 18.0
+spot_attenuation = 0.594604
+spot_angle = 35.0
+spot_angle_attenuation = 1.36604
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )

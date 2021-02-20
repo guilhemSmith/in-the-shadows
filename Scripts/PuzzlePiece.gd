@@ -1,13 +1,14 @@
+tool
 extends Spatial
 
 signal rotation_valid
 
-export var mesh: Resource = null
+export var mesh: Resource = null setget set_mesh
 
 var rot_basis: Basis = Basis(Quat.IDENTITY)
 export var rot_margin: float = 0.002
 
-export var quat_start : Quat = Quat.IDENTITY
+export var quat_start : Quat = Quat.IDENTITY setget set_quat_start
 export var quat_goal : Quat = Quat.IDENTITY
 
 export var enable_horizontal: bool = true
@@ -29,22 +30,25 @@ var translating: bool = false
 export var validation_delay: float = 1.0
 
 onready var timer_validation: Timer = $Timer
-onready var model = $Model
+onready var model = $Model setget set_model
 
 func _ready():
-	if model != null:
+	if mesh != null:
 		model.set_mesh(mesh)
-
+	
 	quat_goal = quat_goal.normalized()
 	rot_basis = Basis(quat_start.normalized())
 	model.transform.basis = rot_basis
 
 func _process(delta):
+	if Engine.editor_hint:
+		return
+
 	if enable_translations:
 		transform.origin = lerp(transform.origin, t_offset, delta * 10)
 
 	if enable_horizontal or enable_vertical:
-			model.transform.basis = Basis(model.transform.basis.get_rotation_quat().slerp(rot_basis.get_rotation_quat(), delta * 10))
+		model.transform.basis = Basis(model.transform.basis.get_rotation_quat().slerp(rot_basis.get_rotation_quat(), delta * 10))
 
 func _input(event):
 	if selected:
@@ -85,6 +89,22 @@ func solve():
 func is_valid():
 	return (rot_basis.get_rotation_quat() - quat_goal).length_squared() < rot_margin
 
+func set_mesh(new_mesh):
+	mesh = new_mesh
+	if model != null:
+		model.set_mesh(mesh)
+
+func set_model(new_model):
+	model = new_model
+	model.transform.basis = rot_basis
+	if mesh != null:
+		model.set_mesh(mesh)
+
+func set_quat_start(new_quat):
+	quat_start = new_quat.normalized()
+	rot_basis = Basis(quat_start)
+	if model != null:
+		model.transform.basis = rot_basis
+
 func _on_Timer_timeout():
 	emit_signal("rotation_valid")
-	pass
