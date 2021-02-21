@@ -26,10 +26,6 @@ material/0 = null
 
 [node name="PuzzlePiece" parent="." instance=ExtResource( 3 )]
 mesh = ExtResource( 1 )
-rot_margin = 0.004
-quat_start = Quat( 0.897629, -0.368258, 0.24217, 0.0010007 )
-quat_goal = Quat( 0.739036, -0.0260013, 0.0390019, 0.672033 )
-enable_translations = false
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -2.9, -0.5, 3 )

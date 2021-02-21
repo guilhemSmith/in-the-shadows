@@ -1,5 +1,5 @@
 tool
-extends Spatial
+extends KinematicBody
 
 signal rotation_valid
 
@@ -18,12 +18,12 @@ export var enable_vertical: bool = true
 export var v_scale: float = 0.05
 
 export var enable_translations: bool = true
-export var t_offset: Vector3 = Vector3.ZERO
+export var t_offset: Vector3 = Vector3.ZERO setget set_t_offset
 export var t_scale: float = 0.025
 export var t_limit_x: float = 1.5
 export var t_limit_y: float = 1.0
 
-var selected: bool = true
+export var selected: bool = false setget set_selected
 var rotating: bool = false
 var rotating_alt: bool = false
 var translating: bool = false
@@ -39,7 +39,9 @@ func _ready():
 		camera = get_node("/root/Puzzle/Camera")
 	if mesh != null:
 		model.set_mesh(mesh)
+	set_selected(selected)
 	
+	transform.origin = t_offset
 	quat_goal = quat_goal.normalized()
 	rot_basis = Basis(quat_start.normalized())
 	model.transform.basis = rot_basis
@@ -84,8 +86,6 @@ func _input(event):
 				var v_offset = -click_from_pos.cross(event.relative.normalized())
 				rot_basis = rot_basis.rotated(Vector3.FORWARD, v_offset * v_scale)
 			if timer_validation.is_stopped() and is_valid():
-				print(rot_basis.get_rotation_quat() - quat_goal)
-				print(rot_basis.get_rotation_quat(), quat_goal)
 				timer_validation.start(validation_delay)
 			elif not timer_validation.is_stopped() and not is_valid():
 				timer_validation.stop()
@@ -94,8 +94,18 @@ func _input(event):
 				t_offset.x = clamp(t_offset.x + trans.x, -t_limit_x, t_limit_x)
 				t_offset.y = clamp(t_offset.y + trans.y, -t_limit_y, t_limit_y)
 
-func select(select: bool):
+func set_selected(select: bool):
 	selected = select
+	var mod = get_node("Model")
+	if mod != null:
+		if selected:
+			var material = SpatialMaterial.new()
+			material.albedo_color = Color.red
+			mod.material_override = material
+		else:
+			var material = SpatialMaterial.new()
+			material.albedo_color = Color.blue
+			mod.material_override = material
 
 func solve():
 	print(rot_basis, Basis(quat_goal))
@@ -120,6 +130,10 @@ func set_quat_start(new_quat):
 	rot_basis = Basis(quat_start)
 	if model != null:
 		model.transform.basis = rot_basis
+
+func set_t_offset(new_offset):
+	t_offset = new_offset
+	transform.origin = t_offset
 
 func _on_Timer_timeout():
 	emit_signal("rotation_valid")

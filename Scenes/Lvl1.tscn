@@ -31,7 +31,6 @@ material/0 = ExtResource( 1 )
 mesh = ExtResource( 4 )
 quat_start = Quat( 0.0480783, 0.720173, 0, 0.692127 )
 quat_goal = Quat( 0.0499844, 0.0899719, 0, 0.994689 )
-h_scale = 0.002
 enable_vertical = false
 enable_translations = false
 
