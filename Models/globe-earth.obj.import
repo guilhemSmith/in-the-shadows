@@ -14,6 +14,6 @@ dest_files=[ "res://.import/globe-earth.obj-a851603de473c282197e08570a75c20c.mes
 [params]
 
 generate_tangents=true
-scale_mesh=Vector3( 0.15, 0.15, 0.15 )
+scale_mesh=Vector3( 0.1, 0.1, 0.1 )
 offset_mesh=Vector3( 0, 0, 0 )
 optimize_mesh=true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Models/elephant.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://Scripts/Puzzle.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/PuzzleSingle.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/PuzzlePiece.tscn" type="PackedScene" id=3]
 
 [sub_resource type="PlaneMesh" id=1]
