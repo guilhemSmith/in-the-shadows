@@ -31,7 +31,6 @@ material/0 = ExtResource( 1 )
 [node name="PuzzlePrim" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 0 )
 mesh = ExtResource( 4 )
-quat_start = Quat( 0.0480783, 0.720173, 0, 0.692127 )
 quat_goal = Quat( 0.0499844, 0.0899719, 0, 0.994689 )
 t_offset = Vector3( 1.5, 1, 0 )
 t_scale = 0.05

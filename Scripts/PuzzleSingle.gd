@@ -22,7 +22,9 @@ func _input(event):
 					selected = hit
 					return
 
-func _on_PuzzlePiece_rotation_valid():
-	$PuzzlePiece.solve()
-	$PuzzlePiece.set_selected(false)
-	print("bravo")
+func _on_PuzzlePiece_moved():
+	if $PuzzlePiece.is_valid():
+		$PuzzlePiece.solve()
+		$PuzzlePiece.set_selected(false)
+		selected = null
+		print("bravo")

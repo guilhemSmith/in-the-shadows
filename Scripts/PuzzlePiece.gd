@@ -1,15 +1,16 @@
 tool
 extends KinematicBody
 
-signal rotation_valid
+signal moved
 
 export var mesh: Resource = null setget set_mesh
 
 var rot_basis: Basis = Basis(Quat.IDENTITY)
 export var rot_margin: float = 0.002
 
-export var quat_start : Quat = Quat.IDENTITY setget set_quat_start
-export var quat_goal : Quat = Quat.IDENTITY
+export var euler_start: Vector3 = Vector3(0, 0, 0) setget set_euler_start
+export var euler_goal: Vector3 = Vector3(0, 0, 0)
+onready var quat_goal : Quat = Quat(euler_goal)
 
 export var enable_horizontal: bool = true
 export var h_scale: float = 0.002
@@ -30,11 +31,11 @@ var translating: bool = false
 
 export var validation_delay: float = 1.0
 
-onready var timer_validation: Timer = $Timer
 onready var model = $Model setget set_model
 var camera: Camera
 
 func _ready():
+	print(euler_start)
 	if not Engine.editor_hint:
 		camera = get_node("/root/Puzzle/Camera")
 	if mesh != null:
@@ -42,8 +43,8 @@ func _ready():
 	set_selected(selected)
 	
 	transform.origin = t_offset
-	quat_goal = quat_goal.normalized()
-	rot_basis = Basis(quat_start.normalized())
+#	quat_goal = quat_goal.normalized()
+	rot_basis = Basis(Quat(euler_start).normalized())
 	model.transform.basis = rot_basis
 
 func _process(delta):
@@ -62,19 +63,20 @@ func _input(event):
 
 	if selected:
 		if event.is_action_pressed("dev_debug"):
-			print(rot_basis.get_rotation_quat())
-			print((rot_basis.get_rotation_quat() - quat_goal).length_squared())
+			print(rot_basis.get_rotation_quat().get_euler())
 		if event is InputEventMouseButton and event.get_button_index() == 1:
+			if not event.is_pressed() and (rotating or rotating_alt or translating):
+				emit_signal("moved")
 			if Input.is_action_pressed("piece_alt_rot"):
 				rotating = false
-				rotating_alt = event.is_pressed() and enable_horizontal
+				rotating_alt = event.is_pressed() and enable_vertical
 				translating = false
 			elif Input.is_action_pressed("piece_trans"):
 				rotating = false
 				rotating_alt = false
 				translating = event.is_pressed() and enable_translations
 			else:
-				rotating = event.is_pressed()
+				rotating = event.is_pressed() and enable_horizontal
 				rotating_alt = false
 				translating = false
 		if event is InputEventMouseMotion:
@@ -85,10 +87,6 @@ func _input(event):
 				var click_from_pos = (obj_pos - event.position).normalized()
 				var v_offset = -click_from_pos.cross(event.relative.normalized())
 				rot_basis = rot_basis.rotated(Vector3.FORWARD, v_offset * v_scale)
-			if timer_validation.is_stopped() and is_valid():
-				timer_validation.start(validation_delay)
-			elif not timer_validation.is_stopped() and not is_valid():
-				timer_validation.stop()
 			if translating:
 				var trans = Vector3(event.relative.x, -event.relative.y, 0).normalized() * t_scale
 				t_offset.x = clamp(t_offset.x + trans.x, -t_limit_x, t_limit_x)
@@ -108,8 +106,8 @@ func set_selected(select: bool):
 			mod.material_override = material
 
 func solve():
-	print(rot_basis, Basis(quat_goal))
 	rot_basis = Basis(quat_goal)
+	print(rot_basis.get_rotation_quat().get_euler())
 
 func is_valid():
 	return (rot_basis.get_rotation_quat() - quat_goal).length_squared() < rot_margin
@@ -125,15 +123,12 @@ func set_model(new_model):
 	if mesh != null:
 		model.set_mesh(mesh)
 
-func set_quat_start(new_quat):
-	quat_start = new_quat.normalized()
-	rot_basis = Basis(quat_start)
+func set_euler_start(new_euler):
+	euler_start = new_euler
+	rot_basis = Basis(Quat(euler_start).normalized())
 	if model != null:
 		model.transform.basis = rot_basis
 
 func set_t_offset(new_offset):
 	t_offset = new_offset
 	transform.origin = t_offset
-
-func _on_Timer_timeout():
-	emit_signal("rotation_valid")
