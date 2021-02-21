@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/MusicManager.gd" type="Script" id=1]
+[ext_resource path="res://Musics/2021-01-12 - Dancing In The Desert - David Renda.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Musics/2019-06-07 - Chill Gaming - David Fesliyan.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Musics/2020-09-14 - Tropical Keys - David Renda.ogg" type="AudioStream" id=4]
+
+[node name="MusicManager" type="AudioStreamPlayer"]
+pause_mode = 2
+script = ExtResource( 1 )
+musics = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ) ]
+[connection signal="finished" from="." to="." method="_on_MusicManager_finished"]

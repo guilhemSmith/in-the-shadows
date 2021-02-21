@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/2021-01-12 - Dancing In The Desert - David Renda.ogg-4acf6cd23452ff0628d768c1f98f1b81.oggstr"
+
+[deps]
+
+source_file="res://Musics/2021-01-12 - Dancing In The Desert - David Renda.ogg"
+dest_files=[ "res://.import/2021-01-12 - Dancing In The Desert - David Renda.ogg-4acf6cd23452ff0628d768c1f98f1b81.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
