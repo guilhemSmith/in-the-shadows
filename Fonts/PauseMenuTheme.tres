@@ -3,9 +3,9 @@
 [ext_resource path="res://Fonts/MenuOption.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Fonts/MenuHeader.tres" type="DynamicFont" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 1 )
@@ -23,7 +23,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.792157, 0.47451, 0.243137, 1 )
 border_width_left = 10
 border_width_top = 10
@@ -35,7 +35,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=7]
 
 [resource]
 default_font = ExtResource( 1 )
@@ -45,8 +45,8 @@ Button/colors/font_color_hover = Color( 0.180392, 0.180392, 0.180392, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
-Button/styles/disabled = SubResource( 6 )
-Button/styles/focus = SubResource( 7 )
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = SubResource( 2 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 5 )
@@ -202,7 +202,7 @@ Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/fonts/font = ExtResource( 2 )
-Label/styles/normal = SubResource( 9 )
+Label/styles/normal = SubResource( 6 )
 LineEdit/colors/clear_button_color = Color( 0, 0, 0, 1 )
 LineEdit/colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
 LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )
@@ -294,7 +294,7 @@ RichTextLabel/fonts/mono_font = null
 RichTextLabel/fonts/normal_font = null
 RichTextLabel/icons/ = null
 RichTextLabel/styles/focus = null
-RichTextLabel/styles/normal = SubResource( 8 )
+RichTextLabel/styles/normal = SubResource( 7 )
 ScrollContainer/styles/bg = null
 SpinBox/icons/updown = null
 TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
