@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Materials/hiearoglyphs.tres" type="Material" id=1]
 [ext_resource path="res://Scripts/PuzzleDual.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/PuzzlePiece.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Models/logo-2.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://Models/logo-4.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=6]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 30, 30 )
@@ -70,5 +71,9 @@ light_color = Color( 0.682353, 0.654902, 0.772549, 1 )
 light_energy = 0.25
 shadow_enabled = true
 shadow_reverse_cull_face = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 6 )]
 [connection signal="moved" from="PuzzlePrim" to="." method="_on_PuzzlePrim_moved"]
 [connection signal="moved" from="PuzzleSec" to="." method="_on_PuzzleSec_moved"]
