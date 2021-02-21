@@ -105,7 +105,9 @@ func set_selected(select: bool):
 			material.albedo_color = Color.blue
 			mod.material_override = material
 
-func solve():
+func solve(offset = null):
+	if offset != null:
+		t_offset = offset
 	rot_basis = Basis(quat_goal)
 	print(rot_basis.get_rotation_quat().get_euler())
 

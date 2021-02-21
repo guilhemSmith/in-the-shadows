@@ -3,8 +3,8 @@
 [ext_resource path="res://Materials/hiearoglyphs.tres" type="Material" id=1]
 [ext_resource path="res://Scripts/PuzzleDual.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/PuzzlePiece.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Models/globe_base.obj" type="ArrayMesh" id=4]
-[ext_resource path="res://Models/globe-earth.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://Models/logo-2.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://Models/logo-4.obj" type="ArrayMesh" id=5]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 30, 30 )
@@ -16,6 +16,8 @@ ambient_light_color = Color( 0.12549, 0.117647, 0.141176, 1 )
 
 [node name="Puzzle" type="Spatial"]
 script = ExtResource( 2 )
+offset_goal = Vector3( 1, 0, 1 )
+offset_margin = 0.2
 
 [node name="WallShadows" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 4.9, 0, -11 )
@@ -29,21 +31,27 @@ mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )
 
 [node name="PuzzlePrim" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 0 )
-mesh = ExtResource( 4 )
-quat_goal = Quat( 0.0499844, 0.0899719, 0, 0.994689 )
-t_offset = Vector3( 1.5, 1, 0 )
-t_scale = 0.05
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5 )
+mesh = ExtResource( 5 )
+rot_margin = 0.005
+euler_start = Vector3( -1.804, -1.099, 0.963 )
+euler_goal = Vector3( 0, -0.03, 0 )
+t_offset = Vector3( -0.5, 0, -0.5 )
 
 [node name="PuzzleSec" parent="." instance=ExtResource( 3 )]
-mesh = ExtResource( 5 )
-t_scale = 0.05
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5 )
+mesh = ExtResource( 4 )
+rot_margin = 0.005
+euler_start = Vector3( -0.496, 0.281, -0.609 )
+euler_goal = Vector3( 0, -0.19, 0 )
+t_offset = Vector3( 0.5, 0, 0.5 )
+t_scale = 0.02
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -2, -1, 3 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 0.997018, 0, -0.0771715, 0, 1, 0, 0.0771715, 0, 0.997018, 0.6, 0, 3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
 light_color = Color( 0.898039, 0.721569, 0.564706, 1 )
 shadow_enabled = true
 shadow_color = Color( 0.12549, 0.117647, 0.141176, 1 )
@@ -62,3 +70,5 @@ light_color = Color( 0.682353, 0.654902, 0.772549, 1 )
 light_energy = 0.25
 shadow_enabled = true
 shadow_reverse_cull_face = true
+[connection signal="moved" from="PuzzlePrim" to="." method="_on_PuzzlePrim_moved"]
+[connection signal="moved" from="PuzzleSec" to="." method="_on_PuzzleSec_moved"]
