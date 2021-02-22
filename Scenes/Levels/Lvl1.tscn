@@ -31,20 +31,10 @@ material/0 = ExtResource( 6 )
 
 [node name="PuzzlePiece" parent="." instance=ExtResource( 5 )]
 mesh = ExtResource( 2 )
-rot_margin = 0.002
 euler_start = Vector3( 0.05, 10, 0 )
 euler_goal = Vector3( 0.05, 0, 0 )
-enable_horizontal = true
-h_scale = 0.002
 enable_vertical = false
-v_scale = 0.05
 enable_translations = false
-t_offset = Vector3( 0, 0, 0 )
-t_scale = 0.025
-t_limit_x = 1.5
-t_limit_y = 1.0
-selected = false
-validation_delay = 1.0
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -2, -1, 3 )

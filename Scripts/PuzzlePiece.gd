@@ -1,5 +1,5 @@
 tool
-extends KinematicBody
+extends Spatial
 
 signal moved
 
@@ -40,6 +40,7 @@ func _ready():
 		camera = get_node("/root/Puzzle/Camera")
 	if mesh != null:
 		model.set_mesh(mesh)
+		model.create_convex_collision()
 	set_selected(selected)
 	
 	transform.origin = t_offset

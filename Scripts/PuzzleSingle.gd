@@ -14,7 +14,7 @@ func _input(event):
 			var space_state = get_world().direct_space_state
 			var selection = space_state.intersect_ray(ray_from, ray_to)
 			if selection.size() > 0:
-				var hit = selection["collider"]
+				var hit = selection["collider"].get_parent().get_parent()
 				if not hit.selected:
 					hit.set_selected(true)
 					if selected != null:
