@@ -5,31 +5,28 @@ export var speed: float = 5
 
 var actif: bool = false
 
+onready var resume_button = $MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ResumeButton
+onready var quit_button = $MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton
+
 func _ready():
 	modulate = Color.transparent
-
-func _process(delta):
-	if actif and modulate.a < 1:
-		modulate = modulate.linear_interpolate(Color.white, delta * speed)
-	elif modulate.a > 0:
-		modulate = modulate.linear_interpolate(Color.transparent, delta * speed * 2)
-	elif not actif:
-		visible = false
+	visible = false
+	resume_button.disabled = true
+	quit_button.disabled = true
 
 func _input(event):
 	if event.is_action_pressed("ui_menu"):
 		get_tree().paused = not actif
 		actif = not actif
 		if actif:
-			visible = true
-		$MarginContainer/VBoxContainer/ResumeButton.disabled = not actif
-		$MarginContainer/VBoxContainer/QuitButton.disabled = not actif
+			$AnimationPlayer.play("popin")
+		else:
+			$AnimationPlayer.play("popout")
 
 func _on_ResumeButton_pressed():
 	get_tree().paused = false
 	actif = false
-	$MarginContainer/VBoxContainer/ResumeButton.disabled = true
-	$MarginContainer/VBoxContainer/QuitButton.disabled = true
+	$AnimationPlayer.play("popout")
 	$ClicSound.play()
 
 func _on_QuitButton_pressed():
