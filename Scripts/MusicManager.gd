@@ -2,13 +2,16 @@ extends AudioStreamPlayer
 
 export(Array, Resource) var musics
 
-onready var index: int = randi() % musics.size()
+var index: int
 
 func _ready():
-	set_stream(musics[index])
-	play()
+	if musics.size() > 0:
+		index = randi() % musics.size()
+		set_stream(musics[index])
+		play()
 
 func _on_MusicManager_finished():
-	index = (index + 1) % musics.size()
-	set_stream(musics[index])
-	play()
+	if musics.size() > 0:
+		index = (index + 1) % musics.size()
+		set_stream(musics[index])
+		play()

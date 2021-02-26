@@ -6,14 +6,10 @@
 [ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/PuzzlePiece.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Materials/hiearoglyphs.tres" type="Material" id=6]
+[ext_resource path="res://Materials/DarknessEnv.tres" type="Environment" id=7]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 30, 30 )
-
-[sub_resource type="Environment" id=2]
-background_mode = 1
-background_color = Color( 0.141176, 0.12549, 0.211765, 1 )
-ambient_light_color = Color( 0.12549, 0.117647, 0.141176, 1 )
 
 [node name="Puzzle" type="Spatial"]
 script = ExtResource( 1 )
@@ -51,10 +47,10 @@ spot_angle = 35.0
 spot_angle_attenuation = 1.36604
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = ExtResource( 7 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.148754, 0.975282, -0.163393, -0.148754, 0.18542, 0.971335, 0.977622, -0.120185, 0.172659, -9, 0, 3.83527 )
+transform = Transform( 0.102643, 0.977738, -0.183013, -0.166366, 0.198267, 0.965926, 0.980708, -0.0686985, 0.183013, -9, 0, 3.83527 )
 light_color = Color( 0.682353, 0.654902, 0.772549, 1 )
 light_energy = 0.25
 shadow_enabled = true
