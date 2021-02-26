@@ -31,7 +31,7 @@ animation = "idle"
 [sub_resource type="AnimationNodeTimeScale" id=17]
 
 [sub_resource type="AnimationNodeBlendTree" id=3]
-graph_offset = Vector2( -229, -29.6326 )
+graph_offset = Vector2( -233, -0.150912 )
 nodes/Add2/node = SubResource( 10 )
 nodes/Add2/position = Vector2( 700, 40 )
 "nodes/Add2 2/node" = SubResource( 13 )
@@ -347,7 +347,7 @@ light_color = Color( 0.682353, 0.654902, 0.772549, 1 )
 light_energy = 0.25
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 0.999833, -0.000504517, -0.0182964, 0.000207818, 0.999869, -0.0162146, 0.0183022, 0.016208, 0.999701, 0, 0, 0 )
+transform = Transform( 0.999514, -0.00121479, -0.0311574, 0.000353936, 0.999618, -0.0276198, 0.0311791, 0.0275953, 0.999133, 0, 0, 0 )
 light_color = Color( 0.898039, 0.721569, 0.564706, 1 )
 spot_range = 2.0
 spot_attenuation = 0.594604
@@ -355,7 +355,7 @@ spot_angle = 7.9
 spot_angle_attenuation = 1.31951
 
 [node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( 0.956957, 0, -0.290228, 0, 1, 0, 0.290228, 0, 0.956957, 0, 0, 0 )
+transform = Transform( -0.426704, 0, 0.904392, 0, 1, 0, -0.904392, 0, -0.426704, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 2 )
 
@@ -397,7 +397,7 @@ __meta__ = {
 margin_left = 200.0
 margin_top = 200.0
 margin_right = 1400.0
-margin_bottom = 878.0
+margin_bottom = 705.0
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
@@ -486,7 +486,6 @@ margin_right = 600.0
 margin_bottom = 335.0
 disabled = true
 text = "Back"
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/NormalButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/NormalButton" to="." method="_on_lvl_menu_pressed" binds= [ false ]]
 [connection signal="mouse_entered" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DebugButton" to="." method="_on_Button_mouse_entered"]

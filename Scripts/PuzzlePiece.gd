@@ -36,8 +36,6 @@ var camera: Camera
 
 func _ready():
 	print(euler_start)
-	if not Engine.editor_hint:
-		camera = get_node("/root/Puzzle/Camera")
 	if mesh != null:
 		model.set_mesh(mesh)
 		model.create_convex_collision()

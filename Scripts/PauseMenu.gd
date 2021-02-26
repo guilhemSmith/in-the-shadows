@@ -5,6 +5,8 @@ export var speed: float = 5
 
 var actif: bool = false
 
+signal quit_order
+
 onready var resume_button = $MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ResumeButton
 onready var quit_button = $MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton
 
@@ -39,4 +41,5 @@ func _on_Button_mouse_entered():
 
 
 func _on_Timer_timeout():
-	get_tree().quit()
+	get_tree().paused = false
+	emit_signal("quit_order")

@@ -1,32 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Models/elephant.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Scripts/PuzzleSingle.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/PuzzlePiece.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Materials/hiearoglyphs.tres" type="Material" id=4]
-[ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=5]
-
-[sub_resource type="PlaneMesh" id=1]
-size = Vector2( 30, 30 )
-
-[sub_resource type="Environment" id=2]
-background_mode = 1
-background_color = Color( 0.141176, 0.12549, 0.211765, 1 )
-ambient_light_color = Color( 0.12549, 0.117647, 0.141176, 1 )
 
 [node name="Puzzle" type="Spatial"]
 script = ExtResource( 2 )
-
-[node name="WallShadows" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 4.9, 0, -11 )
-mesh = SubResource( 1 )
-material/0 = ExtResource( 4 )
-
-[node name="WallUnused" type="MeshInstance" parent="."]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 13.9, 0, 6.9 )
-visible = false
-mesh = SubResource( 1 )
-material/0 = ExtResource( 4 )
 
 [node name="PuzzlePiece" parent="." instance=ExtResource( 3 )]
 mesh = ExtResource( 1 )
@@ -35,32 +14,4 @@ euler_start = Vector3( 0, 1.169, 0.393 )
 euler_goal = Vector3( 1.8, -0.18, 0 )
 v_scale = 0.03
 enable_translations = false
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -2, -1, 3 )
-
-[node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
-light_color = Color( 0.898039, 0.721569, 0.564706, 1 )
-shadow_enabled = true
-shadow_color = Color( 0.12549, 0.117647, 0.141176, 1 )
-shadow_reverse_cull_face = true
-spot_range = 18.0
-spot_attenuation = 0.594604
-spot_angle = 35.0
-spot_angle_attenuation = 1.36604
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
-
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.148754, 0.975282, -0.163393, -0.148754, 0.18542, 0.971335, 0.977622, -0.120185, 0.172659, -9, 0, 3.83527 )
-light_color = Color( 0.682353, 0.654902, 0.772549, 1 )
-light_energy = 0.25
-shadow_enabled = true
-shadow_reverse_cull_face = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 5 )]
 [connection signal="moved" from="PuzzlePiece" to="." method="_on_PuzzlePiece_moved"]

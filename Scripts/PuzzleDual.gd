@@ -4,7 +4,8 @@ export var offset_goal: Vector3 = Vector3.ZERO
 export var offset_margin: float = 0.05
 
 func _ready():
-	pass
+	$PuzzlePrim.camera = camera
+	$PuzzleSec.camera = camera
 
 func validation():
 	var offset = $PuzzleSec.t_offset - $PuzzlePrim.t_offset
@@ -14,7 +15,7 @@ func validation():
 		$PuzzleSec.solve(offset_goal / 2)
 		$PuzzleSec.set_selected(false)
 		selected = null
-		print("bravo")
+		emit_signal("completed")
 	else:
 		print($PuzzlePrim.is_valid(), $PuzzleSec.is_valid(), (offset_goal - offset).length() < offset_margin)
 
