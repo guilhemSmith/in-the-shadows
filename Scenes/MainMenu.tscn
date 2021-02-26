@@ -347,7 +347,7 @@ light_color = Color( 0.682353, 0.654902, 0.772549, 1 )
 light_energy = 0.25
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 0.999196, -0.00178773, -0.0400491, 0.000869743, 0.999737, -0.0229274, 0.0400795, 0.0228741, 0.998935, 0, 0, 0 )
+transform = Transform( 0.999833, -0.000504517, -0.0182964, 0.000207818, 0.999869, -0.0162146, 0.0183022, 0.016208, 0.999701, 0, 0, 0 )
 light_color = Color( 0.898039, 0.721569, 0.564706, 1 )
 spot_range = 2.0
 spot_attenuation = 0.594604
@@ -355,7 +355,7 @@ spot_angle = 7.9
 spot_angle_attenuation = 1.31951
 
 [node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( -0.374241, 0, -0.927332, 0, 1, 0, 0.927332, 0, -0.374241, 0, 0, 0 )
+transform = Transform( 0.956957, 0, -0.290228, 0, 1, 0, 0.290228, 0, 0.956957, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 2 )
 
@@ -397,7 +397,7 @@ __meta__ = {
 margin_left = 200.0
 margin_top = 200.0
 margin_right = 1400.0
-margin_bottom = 705.0
+margin_bottom = 878.0
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
@@ -409,7 +409,7 @@ align = 1
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
 margin_top = 170.0
 margin_right = 1200.0
-margin_bottom = 432.0
+margin_bottom = 505.0
 custom_constants/margin_right = 300
 custom_constants/margin_left = 300
 custom_constants/margin_bottom = 0
@@ -417,7 +417,7 @@ custom_constants/margin_bottom = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer"]
 margin_left = 300.0
 margin_right = 900.0
-margin_bottom = 262.0
+margin_bottom = 335.0
 custom_constants/separation = 30
 
 [node name="NormalButton" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
@@ -431,16 +431,22 @@ margin_right = 600.0
 margin_bottom = 116.0
 text = "Debug"
 
-[node name="MusicButton" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="ResetButton" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 margin_top = 146.0
 margin_right = 600.0
 margin_bottom = 189.0
-text = "Music Licence"
+text = "Reset save"
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="MusicButton" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 margin_top = 219.0
 margin_right = 600.0
 margin_bottom = 262.0
+text = "Music Licence"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 292.0
+margin_right = 600.0
+margin_bottom = 335.0
 text = "Quit"
 
 [node name="LvlContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer"]
@@ -485,6 +491,8 @@ text = "Back"
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/NormalButton" to="." method="_on_lvl_menu_pressed" binds= [ false ]]
 [connection signal="mouse_entered" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DebugButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DebugButton" to="." method="_on_lvl_menu_pressed" binds= [ true ]]
+[connection signal="mouse_entered" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ResetButton" to="." method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ResetButton" to="." method="_on_ResetButton_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MusicButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MusicButton" to="." method="_on_MusicButton_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_Button_mouse_entered"]

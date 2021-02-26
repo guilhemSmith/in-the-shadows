@@ -6,8 +6,17 @@ const MAX_LVL: int = 4
 
 
 func _ready():
-	unlocked = 1
-	pass
+	var save = File.new()
+	if save.file_exists("user://unlocked_lvl.save"):
+		save.open("user://unlocked_lvl.save", File.READ)
+		unlocked = clamp(int(save.get_line()), 1, 4)
+		save.close()
+	else:
+		unlocked = 1
+		save.store_line(str(unlocked))
+		save.open("user://unlocked_lvl.save", File.WRITE)
+		save.close()
+	print("lvl unlocked : ", unlocked)
 
 
 func _on_lvl_menu_pressed(debug):
@@ -26,6 +35,14 @@ func _on_lvl_menu_pressed(debug):
 	$ClicSound.play()
 	$AnimationTree.set("parameters/OneShotSelect/active", true)
 	$AnimationTree.set("parameters/OneShotMain/active", false)
+
+func _on_ResetButton_pressed():
+	$ClicSound.play()
+	unlocked = 1
+	var save = File.new()
+	save.open("user://unlocked_lvl.save", File.WRITE)
+	save.store_line(str(unlocked))
+	save.close()
 
 func _on_MusicButton_pressed():
 	$ClicSound.play()
@@ -58,3 +75,4 @@ func _on_QuitButton_pressed():
 
 func _on_Timer_timeout():
 	get_tree().quit()
+
