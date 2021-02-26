@@ -115,6 +115,7 @@ tracks/3/keys = {
 
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 1600.0
 margin_bottom = 900.0
@@ -174,6 +175,7 @@ margin_right = 300.0
 margin_bottom = 43.0
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 1 )
+disabled = true
 text = "Resume"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
@@ -182,6 +184,7 @@ margin_right = 300.0
 margin_bottom = 116.0
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 1 )
+disabled = true
 text = "Quit"
 
 [node name="ClicSound" type="AudioStreamPlayer" parent="."]
