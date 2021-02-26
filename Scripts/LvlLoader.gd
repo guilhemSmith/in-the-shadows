@@ -26,7 +26,6 @@ func _on_PauseMenu_quit_order():
 	queue_free()
 
 func _on_puzzle_completed():
-	print('hello')
 	var save = File.new()
 	var new_unlock: int = lvl_index + 2
 	var old_unlock: int = 0
