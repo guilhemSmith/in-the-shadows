@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/Levels/LevelAnimationNext.tres" type="Animation" id=6]
 
 [node name="Puzzle" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0 )
 script = ExtResource( 2 )
 offset_goal = Vector3( 1, 0, 1 )
 offset_margin = 0.2

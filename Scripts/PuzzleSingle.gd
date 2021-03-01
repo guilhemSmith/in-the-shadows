@@ -7,7 +7,7 @@ var active = true
 onready var camera: Camera = get_parent().find_node("Camera")
 
 func _ready():
-	if $PuzzlePiece != null:
+	if get_node_or_null("PuzzlePiece") != null:
 		$PuzzlePiece.camera = camera
 	$AnimationPlayer.play("LevelAnimationStart")
 

@@ -69,10 +69,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
 [sub_resource type="Animation" id=38]
@@ -85,7 +85,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5 ),
+"times": PoolRealArray( 0, 0.1, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
@@ -378,7 +378,7 @@ spot_angle = 7.9
 spot_angle_attenuation = 1.31951
 
 [node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( 0.731966, 0, 0.68134, 0, 1, 0, -0.68134, 0, 0.731966, 0, 0, 0 )
+transform = Transform( 0.673118, 0, 0.739534, 0, 1, 0, -0.739534, 0, 0.673118, 0, 0, 0 )
 mesh = SubResource( 42 )
 material/0 = ExtResource( 2 )
 
