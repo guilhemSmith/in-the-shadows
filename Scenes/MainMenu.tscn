@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Menu/PauseMenuTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Materials/hiearoglyphsMenu.tres" type="Material" id=2]
@@ -7,69 +7,59 @@
 [ext_resource path="res://Sounds/tick01.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/tick00.ogg" type="AudioStream" id=6]
 
-[sub_resource type="AnimationNodeAdd2" id=1]
-
-[sub_resource type="AnimationNodeAdd2" id=2]
-
-[sub_resource type="AnimationNodeAdd3" id=3]
-
-[sub_resource type="AnimationNodeAnimation" id=4]
-animation = "ToMain"
-
-[sub_resource type="AnimationNodeAnimation" id=5]
-animation = "ToSelect"
-
-[sub_resource type="AnimationNodeAnimation" id=6]
-animation = "Load"
-
 [sub_resource type="AnimationNodeAnimation" id=7]
 animation = "idle"
 
-[sub_resource type="AnimationNodeBlendSpace1D" id=8]
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "Load"
 
-[sub_resource type="AnimationNodeBlendSpace1D" id=9]
-
-[sub_resource type="AnimationNodeOneShot" id=10]
-
-[sub_resource type="AnimationNodeOneShot" id=11]
-
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=23]
 animation = "Start"
 
-[sub_resource type="AnimationNodeTimeScale" id=13]
+[sub_resource type="AnimationNodeBlendSpace1D" id=24]
+blend_point_0/node = SubResource( 22 )
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource( 23 )
+blend_point_1/pos = 1.0
+snap = 1.0
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "ToSelect"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "ToMain"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=9]
+blend_point_0/node = SubResource( 26 )
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource( 27 )
+blend_point_1/pos = 1.0
+snap = 1.0
+
+[sub_resource type="AnimationNodeOneShot" id=36]
+filter_enabled = true
+filters = [ "CanvasLayer/Control/Panel:custom_styles/panel:bg_color" ]
+
+[sub_resource type="AnimationNodeOneShot" id=35]
+filter_enabled = true
+filters = [ "CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/LvlContainer/Back:disabled", "CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/LvlContainer:modulate", "CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/LvlContainer:visible", "CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DebugButton:disabled", "CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MusicButton:disabled", "CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/NormalButton:disabled", "CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton:disabled", "CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer:modulate", "CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer:visible" ]
 
 [sub_resource type="AnimationNodeBlendTree" id=14]
-graph_offset = Vector2( -211, -387.052 )
-nodes/Add2/node = SubResource( 2 )
-nodes/Add2/position = Vector2( 740, 40 )
-"nodes/Add2 2/node" = SubResource( 1 )
-"nodes/Add2 2/position" = Vector2( 900, 180 )
-nodes/Add3/node = SubResource( 3 )
-nodes/Add3/position = Vector2( 520, -160 )
+graph_offset = Vector2( -27, -51.9433 )
 nodes/Animation/node = SubResource( 7 )
-nodes/Animation/position = Vector2( -20, -120 )
-"nodes/Animation 2/node" = SubResource( 4 )
-"nodes/Animation 2/position" = Vector2( 180, 460 )
-"nodes/Animation 3/node" = SubResource( 5 )
-"nodes/Animation 3/position" = Vector2( 220, 240 )
-"nodes/Animation 4/node" = SubResource( 6 )
-"nodes/Animation 4/position" = Vector2( 200, -300 )
-nodes/BlendSpace1D/node = SubResource( 9 )
-nodes/BlendSpace1D/position = Vector2( -40, 120 )
-"nodes/BlendSpace1D 2/node" = SubResource( 8 )
-"nodes/BlendSpace1D 2/position" = Vector2( -40, 360 )
-nodes/OneShotMain/node = SubResource( 10 )
-nodes/OneShotMain/position = Vector2( 480, 360 )
-nodes/OneShotSelect/node = SubResource( 11 )
-nodes/OneShotSelect/position = Vector2( 460, 140 )
-nodes/Start/node = SubResource( 12 )
-nodes/Start/position = Vector2( 240, 0 )
-nodes/TimeScale/node = SubResource( 13 )
-nodes/TimeScale/position = Vector2( 240, -160 )
+nodes/Animation/position = Vector2( 240, -60 )
+nodes/BlendSpace1DDark/node = SubResource( 24 )
+nodes/BlendSpace1DDark/position = Vector2( 220, 100 )
+nodes/BlendSpace1DSubMenu/node = SubResource( 9 )
+nodes/BlendSpace1DSubMenu/position = Vector2( 400, 260 )
+nodes/OneShotDark/node = SubResource( 36 )
+nodes/OneShotDark/position = Vector2( 600, 0 )
+nodes/OneShotSubMenu/node = SubResource( 35 )
+nodes/OneShotSubMenu/position = Vector2( 880, 140 )
 nodes/output/position = Vector2( 1140, 200 )
-node_connections = [ "Add3", 0, "Animation 4", "Add3", 1, "TimeScale", "Add3", 2, "Start", "TimeScale", 0, "Animation", "OneShotMain", 0, "BlendSpace1D 2", "OneShotMain", 1, "Animation 2", "OneShotSelect", 0, "BlendSpace1D", "OneShotSelect", 1, "Animation 3", "output", 0, "Add2 2", "Add2 2", 0, "Add2", "Add2 2", 1, "OneShotMain", "Add2", 0, "Add3", "Add2", 1, "OneShotSelect" ]
+node_connections = [ "output", 0, "OneShotSubMenu", "OneShotDark", 0, "Animation", "OneShotDark", 1, "BlendSpace1DDark", "OneShotSubMenu", 0, "OneShotDark", "OneShotSubMenu", 1, "BlendSpace1DSubMenu" ]
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=37]
 resource_name = "Load"
 length = 0.5
 tracks/0/type = "value"
@@ -85,8 +75,9 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=38]
 length = 0.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/Control/Panel:custom_styles/panel:bg_color")
 tracks/0/interp = 1
@@ -94,13 +85,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=39]
 length = 0.25
 step = 0.01
 tracks/0/type = "value"
@@ -212,7 +203,7 @@ tracks/8/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=40]
 length = 0.25
 step = 0.01
 tracks/0/type = "value"
@@ -324,8 +315,8 @@ tracks/8/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=19]
-length = 10.0
+[sub_resource type="Animation" id=41]
+length = 100.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Wall:rotation_degrees")
@@ -334,29 +325,17 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 10 ),
+"times": PoolRealArray( 0, 100 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("SpotLight:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 1.11649, 1.72733, 0.0336676 ), Vector3( -4.06953, -2.76777, 0.246578 ), Vector3( 1.9824, -2.23725, 0.0254101 ), Vector3( 0, 0, 0 ), Vector3( 1.11649, 1.72733, 0.0336676 ), Vector3( -4.06953, -2.76777, 0.246578 ), Vector3( 1.9824, -2.23725, 0.0254101 ), Vector3( 1.11649, 1.72733, 0.0336676 ), Vector3( 1.9824, -2.23725, 0.0254101 ) ]
-}
 
-[sub_resource type="CylinderMesh" id=20]
+[sub_resource type="CylinderMesh" id=42]
 flip_faces = true
 
-[sub_resource type="StyleBoxFlat" id=21]
-bg_color = Color( 0, 0, 0, 0 )
+[sub_resource type="StyleBoxFlat" id=43]
+bg_color = Color( 0, 0, 0, 1 )
 
 [node name="MainMenu" type="Spatial"]
 script = ExtResource( 3 )
@@ -365,22 +344,17 @@ script = ExtResource( 3 )
 tree_root = SubResource( 14 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/Add2/add_amount = 1.0
-"parameters/Add2 2/add_amount" = 1.0
-parameters/Add3/add_amount = 1.0
-parameters/BlendSpace1D/blend_position = 1.0
-"parameters/BlendSpace1D 2/blend_position" = 0.0
-parameters/OneShotMain/active = false
-parameters/OneShotSelect/active = false
-parameters/TimeScale/scale = 0.05
+parameters/BlendSpace1DDark/blend_position = 1.0
+parameters/BlendSpace1DSubMenu/blend_position = 1.0
+parameters/OneShotDark/active = false
+parameters/OneShotSubMenu/active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 0.1
-anims/Load = SubResource( 15 )
-anims/Start = SubResource( 16 )
-anims/ToMain = SubResource( 17 )
-anims/ToSelect = SubResource( 18 )
-anims/idle = SubResource( 19 )
+anims/Load = SubResource( 37 )
+anims/Start = SubResource( 38 )
+anims/ToMain = SubResource( 39 )
+anims/ToSelect = SubResource( 40 )
+anims/idle = SubResource( 41 )
 
 [node name="Camera" type="Camera" parent="."]
 keep_aspect = 0
@@ -395,7 +369,6 @@ light_color = Color( 0.682353, 0.654902, 0.772549, 1 )
 light_energy = 0.25
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 0.999982, -9.24415e-05, 0.00589535, 0.000114908, 0.999992, -0.0038106, -0.00589496, 0.00381122, 0.999975, 0, 0, 0 )
 light_color = Color( 0.898039, 0.721569, 0.564706, 1 )
 shadow_enabled = true
 shadow_reverse_cull_face = true
@@ -405,8 +378,8 @@ spot_angle = 7.9
 spot_angle_attenuation = 1.31951
 
 [node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( 0.992461, 0, 0.12256, 0, 1, 0, -0.12256, 0, 0.992461, 0, 0, 0 )
-mesh = SubResource( 20 )
+transform = Transform( 0.731966, 0, 0.68134, 0, 1, 0, -0.68134, 0, 0.731966, 0, 0, 0 )
+mesh = SubResource( 42 )
 material/0 = ExtResource( 2 )
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="."]
@@ -541,7 +514,7 @@ text = "Back"
 margin_right = 1600.0
 margin_bottom = 900.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 21 )
+custom_styles/panel = SubResource( 43 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

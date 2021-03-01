@@ -2,7 +2,6 @@ extends Spatial
 
 signal completed
 
-export var lvl_unlock: int = 0
 var selected = null
 var active = true
 onready var camera: Camera = get_parent().find_node("Camera")
@@ -34,7 +33,7 @@ func move_away():
 	$AnimationPlayer.play("LevelAnimationNext")
 
 func _on_PuzzlePiece_moved():
-	if $PuzzlePiece.is_valid():
+	if active and $PuzzlePiece.is_valid():
 		$PuzzlePiece.solve()
 		$PuzzlePiece.set_selected(false)
 		selected = null

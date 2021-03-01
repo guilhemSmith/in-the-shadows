@@ -17,7 +17,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5 )
 mesh = ExtResource( 5 )
 rot_margin = 0.005
 euler_start = Vector3( -1.804, -1.099, 0.963 )
-euler_goal = Vector3( 0, -0.03, 0 )
+euler_goal = Vector3( -0.5, -1.1, 0.96 )
 t_offset = Vector3( -0.5, 0, -0.5 )
 
 [node name="PuzzleSec" parent="." instance=ExtResource( 3 )]

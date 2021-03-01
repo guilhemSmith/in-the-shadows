@@ -14,7 +14,7 @@ script = ExtResource( 2 )
 mesh = ExtResource( 1 )
 rot_margin = 0.003
 euler_start = Vector3( 0, 1.169, 0.393 )
-euler_goal = Vector3( 1.8, -0.18, 0 )
+euler_goal = Vector3( 1.56, 2.59, 2.58 )
 v_scale = 0.03
 enable_translations = false
 

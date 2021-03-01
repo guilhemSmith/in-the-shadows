@@ -19,7 +19,7 @@ func _ready():
 		save.open("user://unlocked_lvl.save", File.WRITE)
 		save.store_line(str(unlocked))
 		save.close()
-	$AnimationTree.set("parameters/Add3/add_amount", 1)
+	$AnimationTree.set("parameters/OneShotDark/active", true)
 
 func _process(delta):
 	if res_loader != null && res_loader.poll() == ERR_FILE_EOF:
@@ -32,7 +32,7 @@ func _on_lvl_menu_pressed(debug):
 		limit = MAX_LVL + 1
 	for i in range(1, limit):
 		var lvl: Button = lvlContainer.get_node("Lvl" + str(i))
-		if lvl != null:
+		if lvl != null and not lvl.is_connected("mouse_entered", self, "_on_Button_mouse_entered"):
 			lvl.disabled = false
 			lvl.connect("mouse_entered", self, "_on_Button_mouse_entered")
 	for i in range(limit, MAX_LVL + 1):
@@ -40,8 +40,8 @@ func _on_lvl_menu_pressed(debug):
 		if lvl != null:
 			lvl.disabled = true
 	$ClicSound.play()
-	$AnimationTree.set("parameters/OneShotSelect/active", true)
-	$AnimationTree.set("parameters/OneShotMain/active", false)
+	$AnimationTree.set("parameters/BlendSpace1DSubMenu/blend_position", -1)
+	$AnimationTree.set("parameters/OneShotSubMenu/active", true)
 
 func _on_ResetButton_pressed():
 	$ClicSound.play()
@@ -58,8 +58,8 @@ func _on_MusicButton_pressed():
 func _on_Lvl_pressed(lvl):
 	$ClicSound.play()
 	next_lvl = lvl - 1
-	$AnimationTree.set("parameters/Add3/add_amount", -1)
-#	$AnimationTree.set("parameters/OneShotLoad/active", true)
+	$AnimationTree.set("parameters/BlendSpace1DDark/blend_position", -1)
+	$AnimationTree.set("parameters/OneShotDark/active", true)
 	if not $Timer.is_connected("timeout", self, "_on_Lvl_timeout"):
 		$Timer.connect("timeout", self, "_on_Lvl_timeout", [], CONNECT_ONESHOT)
 		$Timer.start(.5)
@@ -72,8 +72,8 @@ func _on_Back_pressed():
 			if lvl.is_connected("mouse_entered", self, "_on_Button_mouse_entered"):
 				lvl.disconnect("mouse_entered", self, "_on_Button_mouse_entered")
 	$ClicSound.play()
-	$AnimationTree.set("parameters/OneShotMain/active", true)
-	$AnimationTree.set("parameters/OneShotSelect/active", false)
+	$AnimationTree.set("parameters/BlendSpace1DSubMenu/blend_position", 1)
+	$AnimationTree.set("parameters/OneShotSubMenu/active", true)
 
 
 func _on_Button_mouse_entered():

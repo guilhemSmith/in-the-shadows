@@ -18,7 +18,6 @@ func _ready():
 
 func _process(delta):
 	if res_loader != null && res_loader.poll() == ERR_FILE_EOF:
-		print("load done")
 		main_scene = res_loader.get_resource()
 		res_loader = null
 
@@ -40,7 +39,6 @@ func _on_PauseMenu_quit_order():
 	queue_free()
 
 func _on_puzzle_completed():
-	print("completed")
 	var save = File.new()
 	var new_unlock: int = lvl_index + 2
 	var old_unlock: int = 0

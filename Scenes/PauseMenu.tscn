@@ -7,10 +7,10 @@
 [ext_resource path="res://Sounds/tick00.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/tick01.ogg" type="AudioStream" id=6]
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0, 0, 0, 0 )
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "Quit"
 length = 0.5
 tracks/0/type = "value"
@@ -26,7 +26,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "Start"
 length = 0.5
 tracks/0/type = "value"
@@ -42,8 +42,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "popin"
+[sub_resource type="Animation" id=4]
 length = 0.25
 step = 0.01
 tracks/0/type = "value"
@@ -94,8 +93,56 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/NextContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/ResumeContainer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/NextContainer/NextButton:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/NextContainer/QuitButton:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "popin next"
 length = 0.25
 step = 0.01
@@ -171,9 +218,32 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/ResumeButton:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/QuitButton:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=2]
-resource_name = "popout"
+[sub_resource type="Animation" id=6]
 length = 0.25
 step = 0.01
 tracks/0/type = "value"
@@ -248,6 +318,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/ResumeButton:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/QuitButton:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "popout next"
@@ -301,6 +395,54 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/ResumeContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/NextContainer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/ResumeButton:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/QuitButton:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
@@ -349,11 +491,12 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 170.0
 margin_right = 600.0
-margin_bottom = 286.0
+margin_bottom = 170.0
 custom_constants/margin_right = 150
 custom_constants/margin_left = 150
 
 [node name="ResumeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+visible = false
 margin_left = 150.0
 margin_right = 450.0
 margin_bottom = 116.0
@@ -404,7 +547,7 @@ text = "Quit"
 margin_right = 1600.0
 margin_bottom = 900.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -423,11 +566,11 @@ pitch_scale = 10.0
 wait_time = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Quit = SubResource( 4 )
-anims/Start = SubResource( 5 )
-anims/popin = SubResource( 1 )
-"anims/popin next" = SubResource( 6 )
-anims/popout = SubResource( 2 )
+anims/Quit = SubResource( 2 )
+anims/Start = SubResource( 3 )
+anims/popin = SubResource( 4 )
+"anims/popin next" = SubResource( 5 )
+anims/popout = SubResource( 6 )
 "anims/popout next" = SubResource( 7 )
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/ResumeButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
