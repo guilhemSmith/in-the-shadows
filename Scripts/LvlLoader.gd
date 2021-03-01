@@ -3,6 +3,8 @@ extends Spatial
 var lvl_factory = Array()
 export var lvl_index: int = 0
 
+var current_lvl = null
+
 var main_scene = null
 onready var res_loader = ResourceLoader.load_interactive("res://Scenes/MainMenu.tscn")
 
@@ -21,9 +23,9 @@ func _process(delta):
 
 func load_lvl(new_lvl: int):
 	lvl_index = new_lvl
-	var lvl = lvl_factory[lvl_index].instance()
-	lvl.connect("completed", self, "_on_puzzle_completed")
-	add_child(lvl)
+	current_lvl = lvl_factory[lvl_index].instance()
+	current_lvl.connect("completed", self, "_on_puzzle_completed")
+	add_child(current_lvl)
 
 func _on_PauseMenu_quit_order():
 	if main_scene == null:
@@ -37,6 +39,7 @@ func _on_PauseMenu_quit_order():
 	queue_free()
 
 func _on_puzzle_completed():
+	print("completed")
 	var save = File.new()
 	var new_unlock: int = lvl_index + 2
 	var old_unlock: int = 0
@@ -48,3 +51,14 @@ func _on_puzzle_completed():
 		save.open("user://unlocked_lvl.save", File.WRITE)
 		save.store_line(str(new_unlock))
 		save.close()
+	$Timer.start()
+
+
+func _on_PauseMenu_next_order():
+	if current_lvl != null:
+		current_lvl.move_away()
+	load_lvl(lvl_index + 1)
+
+
+func _on_Timer_timeout():
+	$CanvasLayer/PauseMenu.next_menu(lvl_index + 1 < lvl_factory.size())

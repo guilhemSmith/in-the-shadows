@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://Scenes/Levels/LevelAnimationStart.tres" type="Animation" id=1]
 [ext_resource path="res://Scripts/PuzzleDual.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/PuzzlePiece.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Models/globe-earth.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://Models/globe_base.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://Scenes/Levels/LevelAnimationNext.tres" type="Animation" id=6]
 
 [node name="Puzzle" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0 )
 script = ExtResource( 2 )
 offset_margin = 0.2
 
@@ -24,5 +27,10 @@ rot_margin = 0.1
 euler_goal = Vector3( 1.2, -1.18, -1 )
 t_offset = Vector3( 0.591, 0.527, 0 )
 t_scale = 0.02
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/LevelAnimationNext = ExtResource( 6 )
+anims/LevelAnimationStart = ExtResource( 1 )
 [connection signal="moved" from="PuzzlePrim" to="." method="_on_PuzzlePrim_moved"]
 [connection signal="moved" from="PuzzleSec" to="." method="_on_PuzzleSec_moved"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

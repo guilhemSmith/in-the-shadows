@@ -6,9 +6,7 @@ export var speed: float = 5
 var actif: bool = false
 
 signal quit_order
-
-onready var resume_button = $MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/ResumeButton
-onready var quit_button = $MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/QuitButton
+signal next_order
 
 func _ready():
 	$AnimationPlayer.play("Start")
@@ -22,6 +20,15 @@ func _input(event):
 		else:
 			$AnimationPlayer.play("popout")
 
+func next_menu(enable: bool):
+	get_tree().paused = not actif
+	
+	actif = not actif
+	if enable:
+		$AnimationPlayer.play("popin next")
+	else:
+		$AnimationPlayer.play("popin")
+
 func _on_ResumeButton_pressed():
 	get_tree().paused = false
 	actif = false
@@ -29,7 +36,11 @@ func _on_ResumeButton_pressed():
 	$ClicSound.play()
 
 func _on_NextButton_pressed():
+	get_tree().paused = false
+	actif = false
+	$AnimationPlayer.play("popout next")
 	$ClicSound.play()
+	emit_signal("next_order")
 
 func _on_QuitButton_pressed():
 	$ClicSound.play()

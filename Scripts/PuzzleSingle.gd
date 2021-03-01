@@ -4,14 +4,16 @@ signal completed
 
 export var lvl_unlock: int = 0
 var selected = null
+var active = true
 onready var camera: Camera = get_parent().find_node("Camera")
 
 func _ready():
 	if $PuzzlePiece != null:
 		$PuzzlePiece.camera = camera
+	$AnimationPlayer.play("LevelAnimationStart")
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if active and event is InputEventMouseButton:
 		if event.get_button_index() == 1 and event.is_pressed():
 			var mouse_pos = event.position
 			var ray_from = camera.project_ray_origin(mouse_pos)
@@ -27,9 +29,17 @@ func _input(event):
 					selected = hit
 					return
 
+func move_away():
+	active = false
+	$AnimationPlayer.play("LevelAnimationNext")
+
 func _on_PuzzlePiece_moved():
 	if $PuzzlePiece.is_valid():
 		$PuzzlePiece.solve()
 		$PuzzlePiece.set_selected(false)
 		selected = null
 		emit_signal("completed")
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Next":
+		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Menu/MenuOption.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Menu/MenuHeader.tres" type="DynamicFont" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://Sounds/tick01.ogg" type="AudioStream" id=6]
 
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0, 0, 0, 1 )
+bg_color = Color( 0, 0, 0, 0 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "Quit"
@@ -95,6 +95,83 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "popin next"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/NextContainer/NextButton:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/NextContainer/QuitButton:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/NextContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/ResumeContainer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [sub_resource type="Animation" id=2]
 resource_name = "popout"
 length = 0.25
@@ -112,7 +189,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/ResumeButton:disabled")
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/NextContainer/NextButton:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/imported = false
@@ -124,7 +201,84 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/QuitButton:disabled")
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/NextContainer/QuitButton:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/ResumeContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/NextContainer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "popout next"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/NextContainer/NextButton:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/MarginContainer/NextContainer/QuitButton:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/imported = false
@@ -159,6 +313,7 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 1600.0
 margin_bottom = 900.0
@@ -209,6 +364,7 @@ margin_right = 300.0
 margin_bottom = 43.0
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 1 )
+disabled = true
 text = "Resume"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/ResumeContainer"]
@@ -217,6 +373,7 @@ margin_right = 300.0
 margin_bottom = 116.0
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 1 )
+disabled = true
 text = "Quit"
 
 [node name="NextContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
@@ -269,7 +426,9 @@ wait_time = 0.5
 anims/Quit = SubResource( 4 )
 anims/Start = SubResource( 5 )
 anims/popin = SubResource( 1 )
+"anims/popin next" = SubResource( 6 )
 anims/popout = SubResource( 2 )
+"anims/popout next" = SubResource( 7 )
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/ResumeButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/QuitButton" to="." method="_on_Button_mouse_entered"]

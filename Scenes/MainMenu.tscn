@@ -396,7 +396,7 @@ light_color = Color( 0.682353, 0.654902, 0.772549, 1 )
 light_energy = 0.25
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 0.99994, -0.000228704, -0.0108875, 0.00012366, 0.999953, -0.00964781, 0.0108892, 0.00964589, 0.999894, 0, 0, 0 )
+transform = Transform( 0.999633, -0.000955763, -0.0270463, 0.000307222, 0.999712, -0.0239729, 0.0270614, 0.0239558, 0.999346, 0, 0, 0 )
 light_color = Color( 0.898039, 0.721569, 0.564706, 1 )
 shadow_enabled = true
 shadow_reverse_cull_face = true
@@ -406,7 +406,7 @@ spot_angle = 7.9
 spot_angle_attenuation = 1.31951
 
 [node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( -0.694175, 0, 0.719806, 0, 1, 0, -0.719806, 0, -0.694175, 0, 0, 0 )
+transform = Transform( 0.906708, 0, -0.421759, 0, 1, 0, 0.421759, 0, 0.906708, 0, 0, 0 )
 mesh = SubResource( 16 )
 material/0 = ExtResource( 2 )
 

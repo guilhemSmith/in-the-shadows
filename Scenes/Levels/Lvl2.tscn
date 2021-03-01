@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Models/elephant.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Scripts/PuzzleSingle.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/PuzzlePiece.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Levels/LevelAnimationStart.tres" type="Animation" id=4]
+[ext_resource path="res://Scenes/Levels/LevelAnimationNext.tres" type="Animation" id=5]
 
 [node name="Puzzle" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="PuzzlePiece" parent="." instance=ExtResource( 3 )]
@@ -14,4 +17,9 @@ euler_start = Vector3( 0, 1.169, 0.393 )
 euler_goal = Vector3( 1.8, -0.18, 0 )
 v_scale = 0.03
 enable_translations = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/LevelAnimationNext = ExtResource( 5 )
+anims/LevelAnimationStart = ExtResource( 4 )
 [connection signal="moved" from="PuzzlePiece" to="." method="_on_PuzzlePiece_moved"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
