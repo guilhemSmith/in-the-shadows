@@ -11,65 +11,65 @@
 
 [sub_resource type="AnimationNodeAdd2" id=2]
 
-[sub_resource type="AnimationNodeAdd3" id=21]
-
-[sub_resource type="AnimationNodeAnimation" id=3]
-animation = "ToMain"
+[sub_resource type="AnimationNodeAdd3" id=3]
 
 [sub_resource type="AnimationNodeAnimation" id=4]
-animation = "ToSelect"
-
-[sub_resource type="AnimationNodeAnimation" id=22]
-animation = "Load"
+animation = "ToMain"
 
 [sub_resource type="AnimationNodeAnimation" id=5]
+animation = "ToSelect"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Load"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "idle"
 
-[sub_resource type="AnimationNodeBlendSpace1D" id=6]
+[sub_resource type="AnimationNodeBlendSpace1D" id=8]
 
-[sub_resource type="AnimationNodeBlendSpace1D" id=7]
+[sub_resource type="AnimationNodeBlendSpace1D" id=9]
 
-[sub_resource type="AnimationNodeOneShot" id=8]
+[sub_resource type="AnimationNodeOneShot" id=10]
 
-[sub_resource type="AnimationNodeOneShot" id=9]
+[sub_resource type="AnimationNodeOneShot" id=11]
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Start"
 
-[sub_resource type="AnimationNodeTimeScale" id=10]
+[sub_resource type="AnimationNodeTimeScale" id=13]
 
-[sub_resource type="AnimationNodeBlendTree" id=11]
+[sub_resource type="AnimationNodeBlendTree" id=14]
 graph_offset = Vector2( -211, -387.052 )
 nodes/Add2/node = SubResource( 2 )
 nodes/Add2/position = Vector2( 740, 40 )
 "nodes/Add2 2/node" = SubResource( 1 )
 "nodes/Add2 2/position" = Vector2( 900, 180 )
-nodes/Add3/node = SubResource( 21 )
+nodes/Add3/node = SubResource( 3 )
 nodes/Add3/position = Vector2( 520, -160 )
-nodes/Animation/node = SubResource( 5 )
+nodes/Animation/node = SubResource( 7 )
 nodes/Animation/position = Vector2( -20, -120 )
-"nodes/Animation 2/node" = SubResource( 3 )
+"nodes/Animation 2/node" = SubResource( 4 )
 "nodes/Animation 2/position" = Vector2( 180, 460 )
-"nodes/Animation 3/node" = SubResource( 4 )
+"nodes/Animation 3/node" = SubResource( 5 )
 "nodes/Animation 3/position" = Vector2( 220, 240 )
-"nodes/Animation 4/node" = SubResource( 22 )
+"nodes/Animation 4/node" = SubResource( 6 )
 "nodes/Animation 4/position" = Vector2( 200, -300 )
-nodes/BlendSpace1D/node = SubResource( 7 )
+nodes/BlendSpace1D/node = SubResource( 9 )
 nodes/BlendSpace1D/position = Vector2( -40, 120 )
-"nodes/BlendSpace1D 2/node" = SubResource( 6 )
+"nodes/BlendSpace1D 2/node" = SubResource( 8 )
 "nodes/BlendSpace1D 2/position" = Vector2( -40, 360 )
-nodes/OneShotMain/node = SubResource( 8 )
+nodes/OneShotMain/node = SubResource( 10 )
 nodes/OneShotMain/position = Vector2( 480, 360 )
-nodes/OneShotSelect/node = SubResource( 9 )
+nodes/OneShotSelect/node = SubResource( 11 )
 nodes/OneShotSelect/position = Vector2( 460, 140 )
-nodes/Start/node = SubResource( 19 )
+nodes/Start/node = SubResource( 12 )
 nodes/Start/position = Vector2( 240, 0 )
-nodes/TimeScale/node = SubResource( 10 )
+nodes/TimeScale/node = SubResource( 13 )
 nodes/TimeScale/position = Vector2( 240, -160 )
 nodes/output/position = Vector2( 1140, 200 )
-node_connections = [ "output", 0, "Add2 2", "Add2", 0, "Add3", "Add2", 1, "OneShotSelect", "Add2 2", 0, "Add2", "Add2 2", 1, "OneShotMain", "OneShotMain", 0, "BlendSpace1D 2", "OneShotMain", 1, "Animation 2", "OneShotSelect", 0, "BlendSpace1D", "OneShotSelect", 1, "Animation 3", "TimeScale", 0, "Animation", "Add3", 0, "Animation 4", "Add3", 1, "TimeScale", "Add3", 2, "Start" ]
+node_connections = [ "Add3", 0, "Animation 4", "Add3", 1, "TimeScale", "Add3", 2, "Start", "TimeScale", 0, "Animation", "OneShotMain", 0, "BlendSpace1D 2", "OneShotMain", 1, "Animation 2", "OneShotSelect", 0, "BlendSpace1D", "OneShotSelect", 1, "Animation 3", "output", 0, "Add2 2", "Add2 2", 0, "Add2", "Add2 2", 1, "OneShotMain", "Add2", 0, "Add3", "Add2", 1, "OneShotSelect" ]
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=15]
 resource_name = "Load"
 length = 0.5
 tracks/0/type = "value"
@@ -85,8 +85,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "Start"
+[sub_resource type="Animation" id=16]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/Control/Panel:custom_styles/panel:bg_color")
@@ -101,7 +100,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=17]
 length = 0.25
 step = 0.01
 tracks/0/type = "value"
@@ -213,7 +212,7 @@ tracks/8/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=18]
 length = 0.25
 step = 0.01
 tracks/0/type = "value"
@@ -325,7 +324,7 @@ tracks/8/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=19]
 length = 10.0
 loop = true
 tracks/0/type = "value"
@@ -353,17 +352,17 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 1.11649, 1.72733, 0.0336676 ), Vector3( -4.06953, -2.76777, 0.246578 ), Vector3( 1.9824, -2.23725, 0.0254101 ), Vector3( 0, 0, 0 ), Vector3( 1.11649, 1.72733, 0.0336676 ), Vector3( -4.06953, -2.76777, 0.246578 ), Vector3( 1.9824, -2.23725, 0.0254101 ), Vector3( 1.11649, 1.72733, 0.0336676 ), Vector3( 1.9824, -2.23725, 0.0254101 ) ]
 }
 
-[sub_resource type="CylinderMesh" id=16]
+[sub_resource type="CylinderMesh" id=20]
 flip_faces = true
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=21]
 bg_color = Color( 0, 0, 0, 0 )
 
 [node name="MainMenu" type="Spatial"]
 script = ExtResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 11 )
+tree_root = SubResource( 14 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Add2/add_amount = 1.0
@@ -377,11 +376,11 @@ parameters/TimeScale/scale = 0.05
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.1
-anims/Load = SubResource( 20 )
-anims/Start = SubResource( 12 )
-anims/ToMain = SubResource( 13 )
-anims/ToSelect = SubResource( 14 )
-anims/idle = SubResource( 15 )
+anims/Load = SubResource( 15 )
+anims/Start = SubResource( 16 )
+anims/ToMain = SubResource( 17 )
+anims/ToSelect = SubResource( 18 )
+anims/idle = SubResource( 19 )
 
 [node name="Camera" type="Camera" parent="."]
 keep_aspect = 0
@@ -396,7 +395,7 @@ light_color = Color( 0.682353, 0.654902, 0.772549, 1 )
 light_energy = 0.25
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 0.999633, -0.000955763, -0.0270463, 0.000307222, 0.999712, -0.0239729, 0.0270614, 0.0239558, 0.999346, 0, 0, 0 )
+transform = Transform( 0.999982, -9.24415e-05, 0.00589535, 0.000114908, 0.999992, -0.0038106, -0.00589496, 0.00381122, 0.999975, 0, 0, 0 )
 light_color = Color( 0.898039, 0.721569, 0.564706, 1 )
 shadow_enabled = true
 shadow_reverse_cull_face = true
@@ -406,8 +405,8 @@ spot_angle = 7.9
 spot_angle_attenuation = 1.31951
 
 [node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( 0.906708, 0, -0.421759, 0, 1, 0, 0.421759, 0, 0.906708, 0, 0, 0 )
-mesh = SubResource( 16 )
+transform = Transform( 0.992461, 0, 0.12256, 0, 1, 0, -0.12256, 0, 0.992461, 0, 0, 0 )
+mesh = SubResource( 20 )
 material/0 = ExtResource( 2 )
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="."]
@@ -542,7 +541,7 @@ text = "Back"
 margin_right = 1600.0
 margin_bottom = 900.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 17 )
+custom_styles/panel = SubResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

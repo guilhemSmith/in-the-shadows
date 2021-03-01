@@ -7,7 +7,6 @@
 [ext_resource path="res://Scenes/PuzzlePiece.tscn" type="PackedScene" id=5]
 
 [node name="Lvl1" type="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.14833, 0, 0 )
 script = ExtResource( 1 )
 
 [node name="PuzzlePiece" parent="." instance=ExtResource( 5 )]
