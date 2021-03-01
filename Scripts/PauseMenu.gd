@@ -7,14 +7,11 @@ var actif: bool = false
 
 signal quit_order
 
-onready var resume_button = $MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ResumeButton
-onready var quit_button = $MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton
+onready var resume_button = $MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/ResumeButton
+onready var quit_button = $MarginContainer/VBoxContainer/MarginContainer/ResumeContainer/QuitButton
 
 func _ready():
-	modulate = Color.transparent
-	visible = false
-	resume_button.disabled = true
-	quit_button.disabled = true
+	$AnimationPlayer.play("Start")
 
 func _input(event):
 	if event.is_action_pressed("ui_menu"):
@@ -31,8 +28,12 @@ func _on_ResumeButton_pressed():
 	$AnimationPlayer.play("popout")
 	$ClicSound.play()
 
+func _on_NextButton_pressed():
+	$ClicSound.play()
+
 func _on_QuitButton_pressed():
 	$ClicSound.play()
+	$AnimationPlayer.play("Quit")
 	$Timer.start()
 
 func _on_Button_mouse_entered():

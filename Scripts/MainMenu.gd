@@ -1,7 +1,8 @@
 extends Spatial
 
 
-onready var lvl_loader = preload("res://Scenes/LvlLoader.tscn")
+var lvl_scene = null
+onready var res_loader = ResourceLoader.load_interactive("res://Scenes/LvlLoader.tscn")
 onready var lvlContainer = $CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/LvlContainer
 var unlocked: int
 const MAX_LVL: int = 4
@@ -18,7 +19,12 @@ func _ready():
 		save.open("user://unlocked_lvl.save", File.WRITE)
 		save.store_line(str(unlocked))
 		save.close()
-	
+	$AnimationTree.set("parameters/Add3/add_amount", 1)
+
+func _process(delta):
+	if res_loader != null && res_loader.poll() == ERR_FILE_EOF:
+		lvl_scene = res_loader.get_resource()
+		res_loader = null
 
 func _on_lvl_menu_pressed(debug):
 	var limit = unlocked + 1
@@ -52,9 +58,11 @@ func _on_MusicButton_pressed():
 func _on_Lvl_pressed(lvl):
 	$ClicSound.play()
 	next_lvl = lvl - 1
+	$AnimationTree.set("parameters/Add3/add_amount", -1)
+#	$AnimationTree.set("parameters/OneShotLoad/active", true)
 	if not $Timer.is_connected("timeout", self, "_on_Lvl_timeout"):
 		$Timer.connect("timeout", self, "_on_Lvl_timeout", [], CONNECT_ONESHOT)
-		$Timer.start()
+		$Timer.start(.5)
 
 func _on_Back_pressed():
 	for i in range(1, MAX_LVL + 1):
@@ -79,13 +87,16 @@ func _on_QuitButton_pressed():
 		$Timer.start()
 
 func _on_Lvl_timeout():
+	if lvl_scene == null:
+		res_loader.wait()
+		lvl_scene = res_loader.get_resource()
+		res_loader = null
+	var instance = lvl_scene.instance()
 	var root = get_tree().root
 	root.remove_child(self)
-	var instance = lvl_loader.instance()
 	instance.lvl_index = next_lvl
 	root.add_child(instance)
 	queue_free()
 
 func _on_Quit_timeout():
 	get_tree().quit()
-

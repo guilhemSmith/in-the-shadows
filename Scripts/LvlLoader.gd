@@ -3,7 +3,8 @@ extends Spatial
 var lvl_factory = Array()
 export var lvl_index: int = 0
 
-onready var main_loader = load("res://Scenes/MainMenu.tscn")
+var main_scene = null
+onready var res_loader = ResourceLoader.load_interactive("res://Scenes/MainMenu.tscn")
 
 func _ready():
 	lvl_factory.push_back(preload("res://Scenes/Levels/Lvl1.tscn"))
@@ -12,6 +13,12 @@ func _ready():
 	lvl_factory.push_back(preload("res://Scenes/Levels/Lvl4.tscn"))
 	load_lvl(lvl_index)
 
+func _process(delta):
+	if res_loader != null && res_loader.poll() == ERR_FILE_EOF:
+		print("load done")
+		main_scene = res_loader.get_resource()
+		res_loader = null
+
 func load_lvl(new_lvl: int):
 	lvl_index = new_lvl
 	var lvl = lvl_factory[lvl_index].instance()
@@ -19,9 +26,13 @@ func load_lvl(new_lvl: int):
 	add_child(lvl)
 
 func _on_PauseMenu_quit_order():
+	if main_scene == null:
+		res_loader.wait()
+		main_scene = res_loader.get_resource()
+		res_loader = null
+	var instance = main_scene.instance()
 	var root = get_tree().root
 	root.remove_child(self)
-	var instance = main_loader.instance()
 	root.add_child(instance)
 	queue_free()
 
