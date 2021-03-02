@@ -38,6 +38,7 @@ func _on_puzzle_completed():
 		save.open("user://unlocked_lvl.save", File.WRITE)
 		save.store_line(str(new_unlock))
 		save.close()
+	$AnimationPlayer.play("Success")
 	$Timer.start()
 
 
