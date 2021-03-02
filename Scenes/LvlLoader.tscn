@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/LvlLoader.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/DustParticles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/MusicManager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Materials/hiearoglyphs.tres" type="Material" id=6]
@@ -46,6 +47,9 @@ shadow_reverse_cull_face = true
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Particles" parent="." instance=ExtResource( 2 )]
+transform = Transform( 25, 0, 0, 0, 25, 0, 0, 0, 25, -1, 0, -4 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
