@@ -38,6 +38,7 @@ material = SubResource( 4 )
 size = Vector2( 0.01, 0.01 )
 
 [node name="Particles" type="Particles"]
+pause_mode = 2
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
 amount = 300
 lifetime = 10.0

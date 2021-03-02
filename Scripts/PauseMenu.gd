@@ -8,6 +8,8 @@ var actif: bool = false
 signal quit_order
 signal next_order
 
+onready var next_button = $MarginContainer/VBoxContainer/MarginContainer/NextContainer/NextButton
+
 func _ready():
 	$AnimationPlayer.play("Start")
 
@@ -25,9 +27,10 @@ func next_menu(enable: bool):
 	
 	actif = not actif
 	if enable:
+		next_button.connect("mouse_entered", self, "_on_Button_mouse_entered")
 		$AnimationPlayer.play("popin next")
 	else:
-		$AnimationPlayer.play("popin")
+		$AnimationPlayer.play("popin last")
 
 func _on_ResumeButton_pressed():
 	get_tree().paused = false
@@ -38,6 +41,7 @@ func _on_ResumeButton_pressed():
 func _on_NextButton_pressed():
 	get_tree().paused = false
 	actif = false
+	next_button.disconnect("mouse_entered", self, "_on_Button_mouse_entered")
 	$AnimationPlayer.play("popout next")
 	$ClicSound.play()
 	emit_signal("next_order")
