@@ -6,6 +6,7 @@ var index: int
 
 func _ready():
 	if musics.size() > 0:
+		randomize()
 		index = randi() % musics.size()
 		set_stream(musics[index])
 		play()

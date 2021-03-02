@@ -22,6 +22,9 @@ func load_lvl(new_lvl: int):
 func _on_PauseMenu_quit_order():
 	var instance = load("res://Scenes/MainMenu.tscn").instance()
 	var root = get_tree().root
+	var music = get_node("MusicManager")
+	remove_child(music)
+	instance.get_node("MusicManager").replace_by(music)
 	root.remove_child(self)
 	root.add_child(instance)
 	queue_free()

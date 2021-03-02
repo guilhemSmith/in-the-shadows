@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/LvlLoader.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/DustParticles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sounds/gong.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/MusicManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Materials/hiearoglyphs.tres" type="Material" id=6]
 [ext_resource path="res://Materials/DarknessEnv.tres" type="Environment" id=7]
 
@@ -85,7 +86,10 @@ anims/Success = SubResource( 2 )
 [node name="Gong" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 3 )
-volume_db = 2.0
+volume_db = -1.0
+
+[node name="MusicManager" parent="." instance=ExtResource( 5 )]
+volume_db = 0.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

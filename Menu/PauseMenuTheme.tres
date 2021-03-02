@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=10 format=2]
+[gd_resource type="Theme" load_steps=11 format=2]
 
 [ext_resource path="res://Menu/MenuOption.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Menu/MenuHeader.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Menu/BackStyle.tres" type="StyleBox" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -23,17 +24,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.792157, 0.47451, 0.243137, 1 )
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+[sub_resource type="StyleBoxEmpty" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
@@ -202,7 +193,7 @@ Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/fonts/font = ExtResource( 2 )
-Label/styles/normal = SubResource( 6 )
+Label/styles/normal = ExtResource( 3 )
 LineEdit/colors/clear_button_color = Color( 0, 0, 0, 1 )
 LineEdit/colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
 LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )
@@ -216,9 +207,9 @@ LineEdit/icons/clear = null
 LineEdit/styles/focus = null
 LineEdit/styles/normal = null
 LineEdit/styles/read_only = null
-LinkButton/colors/font_color = Color( 0, 0, 0, 1 )
-LinkButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
-LinkButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+LinkButton/colors/font_color = Color( 1, 1, 1, 1 )
+LinkButton/colors/font_color_hover = Color( 0.164706, 0.341176, 0.682353, 1 )
+LinkButton/colors/font_color_pressed = Color( 0.156863, 0.247059, 0.419608, 1 )
 LinkButton/constants/underline_spacing = 2
 LinkButton/fonts/font = null
 LinkButton/styles/focus = null
@@ -251,8 +242,8 @@ OptionButton/styles/hover = null
 OptionButton/styles/normal = null
 OptionButton/styles/pressed = null
 Panel/styles/panel = null
-PanelContainer/styles/panel = null
-PopupDialog/styles/panel = null
+PanelContainer/styles/panel = ExtResource( 3 )
+PopupDialog/styles/panel = SubResource( 8 )
 PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
 PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
 PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -277,8 +268,8 @@ ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 ProgressBar/fonts/font = null
 ProgressBar/styles/bg = null
 ProgressBar/styles/fg = null
-RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
-RichTextLabel/colors/font_color_selected = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/default_color = Color( 1, 1, 1, 1 )
+RichTextLabel/colors/font_color_selected = Color( 1, 1, 1, 1 )
 RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 RichTextLabel/colors/selection_color = Color( 0, 0, 0, 1 )
 RichTextLabel/constants/line_separation = 1

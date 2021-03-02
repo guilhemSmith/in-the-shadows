@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Meydän - Sense.ogg-f32cb962da8b47b990f12eb1d91e1936.oggstr"
+
+[deps]
+
+source_file="res://Musics/Meydän - Sense.ogg"
+dest_files=[ "res://.import/Meydän - Sense.ogg-f32cb962da8b47b990f12eb1d91e1936.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

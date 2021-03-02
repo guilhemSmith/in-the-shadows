@@ -1,8 +1,7 @@
 extends Spatial
 
-
-var lvl_scene = null
-onready var res_loader = ResourceLoader.load_interactive("res://Scenes/LvlLoader.tscn")
+onready var music_popup = $CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/PopupDialog
+var lvl_loader = "res://Scenes/LvlLoader.tscn"
 onready var lvlContainer = $CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/LvlContainer
 var unlocked: int
 const MAX_LVL: int = 4
@@ -20,11 +19,6 @@ func _ready():
 		save.store_line(str(unlocked))
 		save.close()
 	$AnimationTree.set("parameters/OneShotDark/active", true)
-
-func _process(delta):
-	if res_loader != null && res_loader.poll() == ERR_FILE_EOF:
-		lvl_scene = res_loader.get_resource()
-		res_loader = null
 
 func _on_lvl_menu_pressed(debug):
 	var limit = unlocked + 1
@@ -53,7 +47,7 @@ func _on_ResetButton_pressed():
 
 func _on_MusicButton_pressed():
 	$ClicSound.play()
-	pass # Replace with function body.
+	music_popup.visible = true
 
 func _on_Lvl_pressed(lvl):
 	$ClicSound.play()
@@ -87,16 +81,23 @@ func _on_QuitButton_pressed():
 		$Timer.start()
 
 func _on_Lvl_timeout():
-	if lvl_scene == null:
-		res_loader.wait()
-		lvl_scene = res_loader.get_resource()
-		res_loader = null
-	var instance = lvl_scene.instance()
+	var instance = load(lvl_loader).instance()
 	var root = get_tree().root
+	var music = $MusicManager
 	root.remove_child(self)
+	remove_child(music)
+	instance.get_node("MusicManager").replace_by(music)
 	instance.lvl_index = next_lvl
 	root.add_child(instance)
 	queue_free()
 
 func _on_Quit_timeout():
 	get_tree().quit()
+
+
+func _on_MeydanButton_pressed():
+	OS.shell_open("https://meydan.bandcamp.com/")
+
+
+func _on_LicenceButton_pressed():
+	OS.shell_open("https://creativecommons.org/licenses/by/3.0/")
