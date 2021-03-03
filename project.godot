@@ -109,5 +109,4 @@ dev_debug={
 
 [rendering]
 
-quality/filters/anisotropic_filter_level=1
 environment/default_environment="res://default_env.tres"
