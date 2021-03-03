@@ -7,16 +7,20 @@
 script = ExtResource( 2 )
 
 [node name="Lvl1" parent="." instance=ExtResource( 1 )]
+lvl_title = "Tea time"
 
 [node name="Lvl2" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 5, 0, 0 )
 lvl = 2
+lvl_title = "Trumpet"
 
 [node name="Lvl3" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 10, 0, 0 )
 lvl = 3
+lvl_title = "Around the world"
 
 [node name="Lvl4" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 15, 0, 0 )
 unlocked = false
 lvl = 4
+lvl_title = "Born 2 code"

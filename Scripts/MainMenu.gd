@@ -18,6 +18,7 @@ func _ready():
 		save.open("user://unlocked_lvl.save", File.WRITE)
 		save.store_line(str(unlocked))
 		save.close()
+	lvlContainer.get_node("VBoxContainer/Label").text = $LvlSelector.get_title()
 	$AnimationTree.set("parameters/OneShotDark/active", true)
 
 func _on_lvl_menu_pressed(debug):
@@ -101,3 +102,7 @@ func _on_LicenceButton_pressed():
 func _on_MusicBack_pressed():
 	$ClicSound.play()
 	music_panel.visible = false
+
+
+func _on_LvlSelector_new_title(title):
+	lvlContainer.get_node("VBoxContainer/Label").text = title

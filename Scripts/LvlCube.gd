@@ -4,6 +4,7 @@ extends StaticBody
 var selected = false setget select
 export var unlocked = true setget unlock
 export var lvl = 1
+export var lvl_title: String = "title"
 
 const COLOR_LOCKED: Color = Color.black
 const COLOR_SELECT: Color = Color.red

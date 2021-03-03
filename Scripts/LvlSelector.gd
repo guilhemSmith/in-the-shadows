@@ -7,11 +7,16 @@ onready var offset = Vector3.ZERO
 onready var base_offset = transform.origin
 var enabled = false setget enable
 
+signal new_title(title)
+
 func _ready():
 	selected_cube.select(true)
 
 func _process(delta):
 	transform.origin = lerp(transform.origin, offset + base_offset, delta * 5)
+
+func get_title():
+	return selected_cube.lvl_title
 
 func lvl_selected():
 	if selected_cube != null:
@@ -46,3 +51,4 @@ func _input(event):
 				hit.select(true)
 				selected_cube = hit
 				offset = - selected_cube.transform.origin * scale
+				emit_signal("new_title", get_title())
