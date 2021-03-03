@@ -40,9 +40,9 @@ size = Vector2( 0.01, 0.01 )
 [node name="Particles" type="Particles"]
 pause_mode = 2
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
-amount = 150
+amount = 50
 lifetime = 5.0
-preprocess = 150.0
+preprocess = 50.0
 visibility_aabb = AABB( -0.2, -0.2, -0.2, 0.4, 0.4, 0.4 )
 process_material = SubResource( 3 )
 draw_pass_1 = SubResource( 5 )

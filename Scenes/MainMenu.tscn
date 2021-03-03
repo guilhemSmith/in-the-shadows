@@ -376,7 +376,6 @@ light_color = Color( 0.682353, 0.654902, 0.772549, 1 )
 light_energy = 0.25
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 0.99327, 0, 0.115821, 0, 1, 0, -0.115821, 0, 0.99327, 0.119, 0, 0 )
 light_color = Color( 0.898039, 0.721569, 0.564706, 1 )
 light_energy = 0.6
 shadow_enabled = true
@@ -387,11 +386,12 @@ spot_angle = 5.7
 spot_angle_attenuation = 1.31951
 
 [node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( -0.490147, 0, 0.871638, 0, 1, 0, -0.871638, 0, -0.490147, 0, 0, 0 )
+transform = Transform( -0.00710985, 0, 0.999973, 0, 1, 0, -0.999973, 0, -0.00710985, 0, 0, 0 )
 mesh = SubResource( 17 )
 material/0 = ExtResource( 2 )
 
 [node name="Particles" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.66527 )
 cast_shadow = 0
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="."]
@@ -568,7 +568,6 @@ text = "License"
 underline = 1
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control"]
-visible = false
 margin_right = 1600.0
 margin_bottom = 900.0
 mouse_filter = 2
