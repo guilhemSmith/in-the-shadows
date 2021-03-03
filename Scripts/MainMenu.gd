@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var music_popup = $CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/PopupDialog
+onready var music_panel = $CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/Panel
 var lvl_loader = "res://Scenes/LvlLoader.tscn"
 onready var lvlContainer = $CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/LvlContainer
 var unlocked: int
@@ -47,7 +47,7 @@ func _on_ResetButton_pressed():
 
 func _on_MusicButton_pressed():
 	$ClicSound.play()
-	music_popup.visible = true
+	music_panel.visible = true
 
 func _on_Lvl_pressed(lvl):
 	$ClicSound.play()
@@ -101,3 +101,8 @@ func _on_MeydanButton_pressed():
 
 func _on_LicenceButton_pressed():
 	OS.shell_open("https://creativecommons.org/licenses/by/3.0/")
+
+
+func _on_MusicBack_pressed():
+	$ClicSound.play()
+	music_panel.visible = false

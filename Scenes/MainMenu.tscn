@@ -386,7 +386,7 @@ spot_angle = 5.7
 spot_angle_attenuation = 1.31951
 
 [node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( -0.00710985, 0, 0.999973, 0, 1, 0, -0.999973, 0, -0.00710985, 0, 0, 0 )
+transform = Transform( 0.118224, 0, 0.992985, 0, 1, 0, -0.992985, 0, 0.118224, 0, 0, 0 )
 mesh = SubResource( 17 )
 material/0 = ExtResource( 2 )
 
@@ -410,16 +410,16 @@ wait_time = 0.25
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-margin_right = 1600.0
-margin_bottom = 900.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
-margin_right = 1600.0
-margin_bottom = 905.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_constants/margin_right = 200
 custom_constants/margin_top = 200
 custom_constants/margin_left = 200
@@ -522,50 +522,65 @@ margin_bottom = 335.0
 disabled = true
 text = "Back"
 
-[node name="PopupDialog" type="PopupDialog" parent="CanvasLayer/Control"]
-visible = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Panel" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer"]
+visible = false
+margin_left = 300.0
+margin_right = 900.0
+margin_bottom = 335.0
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PopupDialog"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/margin_right = 250
-custom_constants/margin_top = 350
-custom_constants/margin_left = 250
-custom_constants/margin_bottom = 200
-
-[node name="Panel" type="PanelContainer" parent="CanvasLayer/Control/PopupDialog/MarginContainer"]
-margin_left = 250.0
-margin_top = 350.0
-margin_right = 1350.0
-margin_bottom = 700.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PopupDialog/MarginContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/Panel"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 1090.0
-margin_bottom = 340.0
-custom_constants/separation = 30
+margin_right = 590.0
+margin_bottom = 325.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MeydanButton" type="LinkButton" parent="CanvasLayer/Control/PopupDialog/MarginContainer/Panel/VBoxContainer"]
-margin_right = 1080.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 530.0
+margin_bottom = 265.0
+custom_constants/separation = 30
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+margin_top = 13.0
+margin_right = 480.0
+margin_bottom = 56.0
+
+[node name="MeydanButton" type="LinkButton" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/CenterContainer"]
+margin_left = 6.0
+margin_right = 473.0
 margin_bottom = 43.0
 text = "Music made by Meydan"
 underline = 1
 
-[node name="LicenceButton" type="LinkButton" parent="CanvasLayer/Control/PopupDialog/MarginContainer/Panel/VBoxContainer"]
-margin_top = 73.0
-margin_right = 1080.0
-margin_bottom = 116.0
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+margin_top = 86.0
+margin_right = 480.0
+margin_bottom = 129.0
+
+[node name="LicenceButton" type="LinkButton" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/CenterContainer2"]
+margin_left = 162.0
+margin_right = 317.0
+margin_bottom = 43.0
 text = "License"
 underline = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+margin_top = 159.0
+margin_right = 480.0
+margin_bottom = 202.0
+text = "Back"
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control"]
 margin_right = 1600.0
@@ -591,5 +606,7 @@ __meta__ = {
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/LvlContainer/Lvl4" to="." method="_on_Lvl_pressed" binds= [ 4 ]]
 [connection signal="mouse_entered" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/LvlContainer/Back" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/LvlContainer/Back" to="." method="_on_Back_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/PopupDialog/MarginContainer/Panel/VBoxContainer/MeydanButton" to="." method="_on_MeydanButton_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/PopupDialog/MarginContainer/Panel/VBoxContainer/LicenceButton" to="." method="_on_LicenceButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/CenterContainer/MeydanButton" to="." method="_on_MeydanButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/CenterContainer2/LicenceButton" to="." method="_on_LicenceButton_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_MusicBack_pressed"]
