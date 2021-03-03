@@ -2,10 +2,13 @@ extends Spatial
 
 onready var camera = get_tree().root.get_camera()
 
-var selected_cube = null
+onready var selected_cube = get_child(0)
 onready var offset = Vector3.ZERO
 onready var base_offset = transform.origin
-var enabled = false
+var enabled = false setget enable
+
+func _ready():
+	selected_cube.select(true)
 
 func _process(delta):
 	transform.origin = lerp(transform.origin, offset + base_offset, delta * 5)
@@ -15,6 +18,14 @@ func lvl_selected():
 		return selected_cube.lvl
 	else:
 		return 0
+
+func enable(val):
+	enabled = val
+	offset = Vector3.ZERO
+	if selected_cube != null:
+		selected_cube.select(false)
+		selected_cube = get_child(0)
+		selected_cube.select(true)
 
 func unlock_lvl(lvl):
 	for cube in get_children():
