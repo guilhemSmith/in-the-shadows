@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/LvlLoader.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/DustParticles.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/MusicManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Materials/hiearoglyphs.tres" type="Material" id=6]
 [ext_resource path="res://Materials/DarknessEnv.tres" type="Environment" id=7]
+[ext_resource path="res://Scenes/TutoIndicator.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 50, 50 )
@@ -94,6 +95,8 @@ volume_db = 0.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 4 )]
+
+[node name="TutoIndicator" parent="CanvasLayer" instance=ExtResource( 8 )]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="next_order" from="CanvasLayer/PauseMenu" to="." method="_on_PauseMenu_next_order"]
 [connection signal="quit_order" from="CanvasLayer/PauseMenu" to="." method="_on_PauseMenu_quit_order"]
