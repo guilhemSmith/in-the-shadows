@@ -10,7 +10,9 @@ export var rot_margin: float = 0.002
 
 export var euler_start: Vector3 = Vector3(0, 0, 0) setget set_euler_start
 export var euler_goal: Vector3 = Vector3(0, 0, 0)
+export var euler_goal2: Vector3 = Vector3(0, 0, 0)
 onready var quat_goal : Quat = Quat(euler_goal)
+onready var quat_goal2 : Quat = Quat(euler_goal2)
 
 export var enable_horizontal: bool = true
 export var h_scale: float = 0.002
@@ -38,11 +40,11 @@ func _ready():
 	print(euler_start)
 	if mesh != null:
 		model.set_mesh(mesh)
-		model.create_convex_collision()
+		if not Engine.editor_hint:
+			model.create_convex_collision()
 	set_selected(selected)
 	
 	transform.origin = t_offset
-#	quat_goal = quat_goal.normalized()
 	rot_basis = Basis(Quat(euler_start).normalized())
 	model.transform.basis = rot_basis
 
@@ -82,7 +84,8 @@ func _input(event):
 			if rotating:
 				rot_basis = rot_basis.rotated(Vector3.UP, event.relative.x * h_scale)
 			if rotating_alt and camera != null:
-				var obj_pos = camera.unproject_position(global_transform.origin)
+#				var obj_pos = camera.unproject_position(global_transform.origin)
+				var obj_pos = get_tree().root.size / 2
 				var click_from_pos = (obj_pos - event.position).normalized()
 				var v_offset = -click_from_pos.cross(event.relative.normalized())
 				rot_basis = rot_basis.rotated(Vector3.FORWARD, v_offset * v_scale)
@@ -107,11 +110,18 @@ func set_selected(select: bool):
 func solve(offset = null):
 	if offset != null:
 		t_offset = offset
-	rot_basis = Basis(quat_goal)
-	print(rot_basis.get_rotation_quat().get_euler())
+	var current_quat = rot_basis.get_rotation_quat()
+	if (current_quat - quat_goal).length_squared() < (current_quat - quat_goal2).length_squared():
+		rot_basis = Basis(quat_goal)
+	else:
+		rot_basis = Basis(quat_goal2)
 
 func is_valid():
-	return (rot_basis.get_rotation_quat() - quat_goal).length_squared() < rot_margin
+	var current_quat = rot_basis.get_rotation_quat()
+	return (
+		(current_quat - quat_goal).length_squared() < rot_margin
+		or (current_quat - quat_goal2).length_squared() < rot_margin
+	)
 
 func set_mesh(new_mesh):
 	mesh = new_mesh
