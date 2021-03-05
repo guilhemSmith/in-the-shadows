@@ -10,6 +10,8 @@
 [node name="Puzzle" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0 )
 script = ExtResource( 2 )
+tuto_goal = 4
+tuto_current = 3
 offset_margin = 0.2
 
 [node name="PuzzlePrim" parent="." instance=ExtResource( 3 )]
@@ -41,6 +43,16 @@ t_limit_y = 1.5
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/LevelAnimationNext = ExtResource( 6 )
 anims/LevelAnimationStart = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 [connection signal="moved" from="PuzzlePrim" to="." method="_on_PuzzlePrim_moved"]
+[connection signal="started_first_rot" from="PuzzlePrim" to="." method="_on_PuzzlePiece_started_first_rot"]
+[connection signal="started_second_rot" from="PuzzlePrim" to="." method="_on_PuzzlePiece_started_second_rot"]
+[connection signal="started_trans" from="PuzzlePrim" to="." method="_on_PuzzlePiece_started_trans"]
 [connection signal="moved" from="PuzzleSec" to="." method="_on_PuzzleSec_moved"]
+[connection signal="started_first_rot" from="PuzzleSec" to="." method="_on_PuzzlePiece_started_first_rot"]
+[connection signal="started_second_rot" from="PuzzleSec" to="." method="_on_PuzzlePiece_started_second_rot"]
+[connection signal="started_trans" from="PuzzleSec" to="." method="_on_PuzzlePiece_started_trans"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

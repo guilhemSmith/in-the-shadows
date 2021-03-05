@@ -17,6 +17,8 @@ func load_lvl(new_lvl: int):
 	lvl_index = new_lvl
 	current_lvl = load(lvl_factory[lvl_index]).instance()
 	current_lvl.connect("completed", self, "_on_puzzle_completed")
+	current_lvl.connect("start_tuto", $CanvasLayer/TutoIndicator, "_on_StartTuto")
+	current_lvl.connect("stop_tuto", $CanvasLayer/TutoIndicator, "_on_StopTuto")
 	add_child(current_lvl)
 
 func _on_PauseMenu_quit_order():

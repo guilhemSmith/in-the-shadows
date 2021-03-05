@@ -9,10 +9,12 @@
 [node name="Puzzle" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0 )
 script = ExtResource( 2 )
+tuto_goal = 3
+tuto_current = 2
 
 [node name="PuzzlePiece" parent="." instance=ExtResource( 3 )]
 mesh = ExtResource( 1 )
-rot_margin = 0.003
+rot_margin = 0.01
 euler_start = Vector3( 0, 1.169, 0.393 )
 euler_goal = Vector3( 1.56, 2.59, 2.58 )
 euler_goal2 = Vector3( 1.56, 1.74, -1.51 )
@@ -22,5 +24,12 @@ enable_translations = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/LevelAnimationNext = ExtResource( 5 )
 anims/LevelAnimationStart = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 [connection signal="moved" from="PuzzlePiece" to="." method="_on_PuzzlePiece_moved"]
+[connection signal="started_first_rot" from="PuzzlePiece" to="." method="_on_PuzzlePiece_started_first_rot"]
+[connection signal="started_second_rot" from="PuzzlePiece" to="." method="_on_PuzzlePiece_started_second_rot"]
+[connection signal="started_trans" from="PuzzlePiece" to="." method="_on_PuzzlePiece_started_trans"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -2,6 +2,18 @@ tool
 extends Spatial
 
 signal moved
+signal started_first_rot
+signal started_second_rot
+signal started_trans
+
+var already_first_rot = false
+var dist_first_rot = 0
+
+var already_second_rot = false
+var dist_second_rot = 0
+
+var already_trans = false
+var dist_trans = 0
 
 export var mesh: Resource = null setget set_mesh
 
@@ -69,10 +81,12 @@ func _input(event):
 			if not event.is_pressed() and (rotating or rotating_alt or translating):
 				emit_signal("moved")
 			if Input.is_action_pressed("piece_alt_rot"):
+				emit_signal("started_second_rot")
 				rotating = false
 				rotating_alt = event.is_pressed() and enable_vertical
 				translating = false
 			elif Input.is_action_pressed("piece_trans"):
+				emit_signal("started_trans")
 				rotating = false
 				rotating_alt = false
 				translating = event.is_pressed() and enable_translations
@@ -83,16 +97,31 @@ func _input(event):
 		if event is InputEventMouseMotion:
 			if rotating:
 				rot_basis = rot_basis.rotated(Vector3.UP, event.relative.x * h_scale)
+				if not already_first_rot:
+					dist_first_rot += abs(event.relative.x)
+					if dist_first_rot > 10000:
+						emit_signal("started_first_rot")
+						already_first_rot = true
 			if rotating_alt and camera != null:
 #				var obj_pos = camera.unproject_position(global_transform.origin)
 				var obj_pos = get_tree().root.size / 2
 				var click_from_pos = (obj_pos - event.position).normalized()
 				var v_offset = -click_from_pos.cross(event.relative.normalized())
 				rot_basis = rot_basis.rotated(Vector3.FORWARD, v_offset * v_scale)
+				if not already_second_rot:
+					dist_second_rot += abs(v_offset)
+					if dist_second_rot > 10000:
+						emit_signal("started_second_rot")
+						already_second_rot = true
 			if translating:
 				var trans = Vector3(event.relative.x, -event.relative.y, 0).normalized() * t_scale
 				t_offset.x = clamp(t_offset.x + trans.x, -t_limit_x, t_limit_x)
 				t_offset.y = clamp(t_offset.y + trans.y, -t_limit_y, t_limit_y)
+				if not already_trans:
+					dist_trans += t_offset.length()
+					if dist_trans > 10000:
+						emit_signal("started_trans")
+						already_trans = true
 
 func set_selected(select: bool):
 	selected = select

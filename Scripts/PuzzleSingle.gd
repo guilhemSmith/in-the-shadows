@@ -1,6 +1,11 @@
 extends Spatial
 
 signal completed
+signal start_tuto(name)
+signal stop_tuto
+
+export var tuto_goal = 0
+export var tuto_current = 0
 
 var selected = null
 var active = true
@@ -10,6 +15,8 @@ func _ready():
 	if get_node_or_null("PuzzlePiece") != null:
 		$PuzzlePiece.camera = camera
 	$AnimationPlayer.play("LevelAnimationStart")
+	if tuto_goal >= 1 and tuto_current == 0:
+		$Timer.start(3)
 
 func _input(event):
 	if active and event is InputEventMouseButton:
@@ -25,8 +32,14 @@ func _input(event):
 					hit.set_selected(true)
 					if selected != null:
 						selected.set_selected(false)
+					elif tuto_goal >= 1 and tuto_current == 0:
+						if not $Timer.is_stopped():
+							$Timer.stop()
+						emit_signal("stop_tuto")
+						tuto_current = 1
+					if tuto_goal >= 2 and tuto_current < tuto_goal:
+						$Timer.start(1)
 					selected = hit
-					return
 
 func move_away():
 	active = false
@@ -38,7 +51,48 @@ func _on_PuzzlePiece_moved():
 		$PuzzlePiece.set_selected(false)
 		selected = null
 		emit_signal("completed")
+		emit_signal("stop_tuto")
+		if not $Timer.is_stopped():
+			$Timer.stop()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Next":
 		queue_free()
+
+
+func _on_Timer_timeout():
+	print(tuto_current)
+	match tuto_current:
+		0:
+			emit_signal("start_tuto", "SelectionClick")
+		1:
+			emit_signal("start_tuto", "FirstRotation")
+		2:
+			emit_signal("start_tuto", "SecondRotation")
+		3:
+			emit_signal("start_tuto", "Translation")
+		
+
+
+func _on_PuzzlePiece_started_first_rot():
+	if tuto_goal >= 2 and tuto_current == 1:
+		if not $Timer.is_stopped():
+			$Timer.stop()
+		emit_signal("stop_tuto")
+		tuto_current = 2
+
+
+func _on_PuzzlePiece_started_second_rot():
+	if tuto_goal >= 3 and tuto_current == 2:
+		if not $Timer.is_stopped():
+			$Timer.stop()
+		emit_signal("stop_tuto")
+		tuto_current = 3
+
+
+func _on_PuzzlePiece_started_trans():
+	if tuto_goal >= 4 and tuto_current == 3:
+		if not $Timer.is_stopped():
+			$Timer.stop()
+		emit_signal("stop_tuto")
+		tuto_current = 4

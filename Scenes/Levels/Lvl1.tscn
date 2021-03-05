@@ -8,6 +8,7 @@
 
 [node name="Lvl1" type="Spatial"]
 script = ExtResource( 1 )
+tuto_goal = 2
 
 [node name="PuzzlePiece" parent="." instance=ExtResource( 5 )]
 mesh = ExtResource( 2 )
@@ -21,5 +22,13 @@ enable_translations = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/LevelAnimationNext = ExtResource( 4 )
 anims/LevelAnimationStart = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 [connection signal="moved" from="PuzzlePiece" to="." method="_on_PuzzlePiece_moved"]
+[connection signal="started_first_rot" from="PuzzlePiece" to="." method="_on_PuzzlePiece_started_first_rot"]
+[connection signal="started_second_rot" from="PuzzlePiece" to="." method="_on_PuzzlePiece_started_second_rot"]
+[connection signal="started_trans" from="PuzzlePiece" to="." method="_on_PuzzlePiece_started_trans"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
