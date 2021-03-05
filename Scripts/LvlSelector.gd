@@ -46,9 +46,21 @@ func _input(event):
 		if selection.size() > 0:
 			var hit = selection["collider"]
 			if hit.unlocked and hit != selected_cube:
-				if selected_cube != null:
-					selected_cube.select(false)
+				selected_cube.select(false)
 				hit.select(true)
 				selected_cube = hit
 				offset = - selected_cube.transform.origin * scale
 				emit_signal("new_title", get_title())
+	elif enabled and event is InputEventKey:
+		var next_cube = null
+		if Input.is_action_just_pressed("ui_left"):
+			next_cube = get_child(clamp(selected_cube.lvl - 2, 0, 3))
+		elif Input.is_action_just_pressed("ui_right"):
+			next_cube = get_child(clamp(selected_cube.lvl, 0, 3))
+		if next_cube != null and next_cube != selected_cube and next_cube.unlocked:
+			selected_cube.select(false)
+			next_cube.select(true)
+			selected_cube = next_cube
+			offset = - selected_cube.transform.origin * scale
+			emit_signal("new_title", get_title())
+			

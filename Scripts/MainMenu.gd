@@ -54,12 +54,6 @@ func _on_Play_pressed():
 			$Timer.start(.5)
 
 func _on_Back_pressed():
-	for i in range(1, MAX_LVL + 1):
-		var lvl: Button = lvlContainer.get_node("Lvl" + str(i))
-		if lvl != null:
-			lvl.disabled = true
-			if lvl.is_connected("mouse_entered", self, "_on_Button_mouse_entered"):
-				lvl.disconnect("mouse_entered", self, "_on_Button_mouse_entered")
 	$ClicSound.play()
 	$LvlSelector.enabled = false
 	$AnimationTree.set("parameters/BlendSpace1DSubMenu/blend_position", 1)
