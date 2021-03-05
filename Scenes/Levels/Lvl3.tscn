@@ -18,16 +18,22 @@ mesh = ExtResource( 5 )
 rot_margin = 0.01
 euler_start = Vector3( 0, -0.494, 0 )
 euler_goal = Vector3( -1.49, 2.35, -2.3 )
+h_scale = 0.003
+v_scale = 0.06
 t_offset = Vector3( -0.208, -0.163, 0 )
-t_scale = 0.03
+t_scale = 0.05
+t_limit_y = 1.5
 
 [node name="PuzzleSec" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591, 0.527, 0 )
 mesh = ExtResource( 4 )
 rot_margin = 0.1
 euler_goal = Vector3( 0.09, 1.63, -1.52 )
+h_scale = 0.003
+v_scale = 0.06
 t_offset = Vector3( 0.591, 0.527, 0 )
-t_scale = 0.03
+t_scale = 0.05
+t_limit_y = 1.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/LevelAnimationNext = ExtResource( 6 )

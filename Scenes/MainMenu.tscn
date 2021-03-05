@@ -462,7 +462,7 @@ spot_angle = 10.0
 spot_angle_attenuation = 1.31951
 
 [node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( 0.925474, 0, 0.378808, 0, 1, 0, -0.378808, 0, 0.925474, 0, 0, 0 )
+transform = Transform( -0.939856, 0, 0.341569, 0, 1, 0, -0.341569, 0, -0.939856, 0, 0, 0 )
 mesh = SubResource( 17 )
 material/0 = ExtResource( 2 )
 
@@ -512,7 +512,7 @@ __meta__ = {
 margin_left = 150.0
 margin_top = 100.0
 margin_right = 1130.0
-margin_bottom = 680.0
+margin_bottom = 620.0
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
@@ -594,13 +594,13 @@ alignment = 1
 margin_left = 173.0
 margin_right = 274.0
 margin_bottom = 43.0
-text = "Back"
+text = "  Back  "
 
 [node name="PlayButton" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/LvlContainer/VBoxContainer/HBoxContainer"]
 margin_left = 324.0
 margin_right = 407.0
 margin_bottom = 43.0
-text = "Play"
+text = "  Play  "
 
 [node name="Panel" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer"]
 visible = false
