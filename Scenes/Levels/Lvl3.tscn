@@ -30,7 +30,7 @@ t_limit_y = 1.5
 [node name="PuzzleSec" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591, 0.527, 0 )
 mesh = ExtResource( 4 )
-rot_margin = 0.2
+rot_margin = 0.5
 euler_start = Vector3( 0, -0.764, -0.164 )
 euler_goal = Vector3( 0, 1.5, 1.5 )
 euler_goal2 = Vector3( 0, 1.5, -1.5 )

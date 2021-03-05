@@ -16,8 +16,6 @@ func validation():
 		$PuzzleSec.set_selected(false)
 		selected = null
 		emit_signal("completed")
-	else:
-		print($PuzzlePrim.is_valid(), $PuzzleSec.is_valid(), (offset_goal - offset).length() < offset_margin)
 
 func _on_PuzzlePrim_moved():
 	validation()

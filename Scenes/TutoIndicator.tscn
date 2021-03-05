@@ -6,7 +6,7 @@
 [ext_resource path="res://Textures/KeyAlt.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/TutoIndicator.gd" type="Script" id=5]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "FirstRotation"
 length = 2.0
 loop = true
@@ -59,7 +59,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "Hidden"
 length = 0.5
 tracks/0/type = "value"
@@ -212,8 +212,7 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "SelectionClick"
+[sub_resource type="Animation" id=4]
 loop = true
 step = 0.01
 tracks/0/type = "value"
@@ -265,8 +264,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Translation"
+[sub_resource type="Animation" id=5]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -350,18 +348,18 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/FirstRotation = SubResource( 2 )
-anims/Hidden = SubResource( 5 )
+anims/FirstRotation = SubResource( 1 )
+anims/Hidden = SubResource( 2 )
 anims/SecondRotation = SubResource( 3 )
-anims/SelectionClick = SubResource( 1 )
-anims/Translation = SubResource( 4 )
+anims/SelectionClick = SubResource( 4 )
+anims/Translation = SubResource( 5 )
 
 [node name="Mouse" type="VBoxContainer" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 400.0
+margin_left = 600.0
 margin_top = 300.0
-margin_right = 700.001
+margin_right = 900.001
 margin_bottom = 904.0
 rect_rotation = -360.0
 rect_scale = Vector2( 0.5, 0.5 )

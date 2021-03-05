@@ -35,7 +35,7 @@ func _input(event):
 					elif tuto_goal >= 1 and tuto_current == 0:
 						if not $Timer.is_stopped():
 							$Timer.stop()
-						emit_signal("stop_tuto")
+						emit_signal("stop_tuto", 1)
 						tuto_current = 1
 					if tuto_goal >= 2 and tuto_current < tuto_goal:
 						$Timer.start(1)
@@ -51,9 +51,9 @@ func _on_PuzzlePiece_moved():
 		$PuzzlePiece.set_selected(false)
 		selected = null
 		emit_signal("completed")
-		emit_signal("stop_tuto")
 		if not $Timer.is_stopped():
 			$Timer.stop()
+			emit_signal("stop_tuto", tuto_current + 1)
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Next":
@@ -61,7 +61,6 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_Timer_timeout():
-	print(tuto_current)
 	match tuto_current:
 		0:
 			emit_signal("start_tuto", "SelectionClick")
@@ -78,7 +77,7 @@ func _on_PuzzlePiece_started_first_rot():
 	if tuto_goal >= 2 and tuto_current == 1:
 		if not $Timer.is_stopped():
 			$Timer.stop()
-		emit_signal("stop_tuto")
+		emit_signal("stop_tuto", 2)
 		tuto_current = 2
 
 
@@ -86,7 +85,7 @@ func _on_PuzzlePiece_started_second_rot():
 	if tuto_goal >= 3 and tuto_current == 2:
 		if not $Timer.is_stopped():
 			$Timer.stop()
-		emit_signal("stop_tuto")
+		emit_signal("stop_tuto", 3)
 		tuto_current = 3
 
 
@@ -94,5 +93,5 @@ func _on_PuzzlePiece_started_trans():
 	if tuto_goal >= 4 and tuto_current == 3:
 		if not $Timer.is_stopped():
 			$Timer.stop()
-		emit_signal("stop_tuto")
+		emit_signal("stop_tuto", 4)
 		tuto_current = 4

@@ -49,7 +49,6 @@ onready var model = $Model setget set_model
 var camera: Camera
 
 func _ready():
-	print(euler_start)
 	if mesh != null:
 		model.set_mesh(mesh)
 		if not Engine.editor_hint:
@@ -77,16 +76,16 @@ func _input(event):
 	if selected:
 		if event.is_action_pressed("dev_debug"):
 			print(rot_basis.get_rotation_quat().get_euler())
+			print(quat_goal.get_euler())
+			print(quat_goal2.get_euler())
 		if event is InputEventMouseButton and event.get_button_index() == 1:
 			if not event.is_pressed() and (rotating or rotating_alt or translating):
 				emit_signal("moved")
 			if Input.is_action_pressed("piece_alt_rot"):
-				emit_signal("started_second_rot")
 				rotating = false
 				rotating_alt = event.is_pressed() and enable_vertical
 				translating = false
 			elif Input.is_action_pressed("piece_trans"):
-				emit_signal("started_trans")
 				rotating = false
 				rotating_alt = false
 				translating = event.is_pressed() and enable_translations
@@ -99,7 +98,7 @@ func _input(event):
 				rot_basis = rot_basis.rotated(Vector3.UP, event.relative.x * h_scale)
 				if not already_first_rot:
 					dist_first_rot += abs(event.relative.x)
-					if dist_first_rot > 10000:
+					if dist_first_rot > 750:
 						emit_signal("started_first_rot")
 						already_first_rot = true
 			if rotating_alt and camera != null:
@@ -110,7 +109,7 @@ func _input(event):
 				rot_basis = rot_basis.rotated(Vector3.FORWARD, v_offset * v_scale)
 				if not already_second_rot:
 					dist_second_rot += abs(v_offset)
-					if dist_second_rot > 10000:
+					if dist_second_rot > 50.0:
 						emit_signal("started_second_rot")
 						already_second_rot = true
 			if translating:
@@ -118,8 +117,8 @@ func _input(event):
 				t_offset.x = clamp(t_offset.x + trans.x, -t_limit_x, t_limit_x)
 				t_offset.y = clamp(t_offset.y + trans.y, -t_limit_y, t_limit_y)
 				if not already_trans:
-					dist_trans += t_offset.length()
-					if dist_trans > 10000:
+					dist_trans += trans.length()
+					if dist_trans > 1.5:
 						emit_signal("started_trans")
 						already_trans = true
 

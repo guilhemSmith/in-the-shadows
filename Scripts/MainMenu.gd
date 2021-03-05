@@ -4,6 +4,7 @@ onready var music_panel = $CanvasLayer/Control/MarginContainer/VBoxContainer/Mar
 var lvl_loader = "res://Scenes/LvlLoader.tscn"
 onready var lvlContainer = $CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/LvlContainer
 var unlocked: int
+var tuto: int
 const MAX_LVL: int = 4
 var next_lvl = 0
 
@@ -12,11 +13,14 @@ func _ready():
 	if save.file_exists("user://unlocked_lvl.save"):
 		save.open("user://unlocked_lvl.save", File.READ)
 		unlocked = clamp(int(save.get_line()), 1, 4)
+		tuto = clamp(int(save.get_line()), 0, 4)
 		save.close()
 	else:
 		unlocked = 1
+		tuto = 0
 		save.open("user://unlocked_lvl.save", File.WRITE)
 		save.store_line(str(unlocked))
+		save.store_line(str(tuto))
 		save.close()
 	lvlContainer.get_node("VBoxContainer/Label").text = $LvlSelector.get_title()
 	$AnimationTree.set("parameters/OneShotDark/active", true)
@@ -34,9 +38,11 @@ func _on_lvl_menu_pressed(debug):
 func _on_ResetButton_pressed():
 	$ClicSound.play()
 	unlocked = 1
+	tuto = 0
 	var save = File.new()
 	save.open("user://unlocked_lvl.save", File.WRITE)
 	save.store_line(str(unlocked))
+	save.store_line(str(tuto))
 	save.close()
 
 func _on_MusicButton_pressed():
@@ -78,6 +84,7 @@ func _on_Lvl_timeout():
 	remove_child(music)
 	instance.get_node("MusicManager").replace_by(music)
 	instance.lvl_index = next_lvl
+	instance.tuto_state = tuto
 	root.add_child(instance)
 	queue_free()
 
