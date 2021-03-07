@@ -53,7 +53,8 @@ func _on_PuzzlePiece_moved():
 		emit_signal("completed")
 		if not $Timer.is_stopped():
 			$Timer.stop()
-			emit_signal("stop_tuto", tuto_current + 1)
+		if tuto_current < tuto_goal:
+			emit_signal("stop_tuto", tuto_goal)
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Next":

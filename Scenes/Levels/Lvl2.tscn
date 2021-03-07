@@ -17,7 +17,7 @@ mesh = ExtResource( 1 )
 rot_margin = 0.05
 euler_start = Vector3( 0, 1.169, 0.393 )
 euler_goal = Vector3( 1.56, 2.59, 2.58 )
-euler_goal2 = Vector3( 1.56, 1.74, -1.51 )
+euler_goal2 = Vector3( 1.56, 0.02, 3.06 )
 h_scale = 0.003
 enable_translations = false
 

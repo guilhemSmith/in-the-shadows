@@ -74,10 +74,11 @@ func _input(event):
 		return
 
 	if selected:
-		if event.is_action_pressed("dev_debug"):
-			print(rot_basis.get_rotation_quat().get_euler())
-			print(quat_goal.get_euler())
-			print(quat_goal2.get_euler())
+#		if event.is_action_pressed("dev_debug"):
+#			print("DEBUGING")
+#			print("EULER: ", rot_basis.get_rotation_quat().get_euler())
+#			print("QUAT: ", rot_basis.get_rotation_quat())
+#			print(quat_goal2.get_euler())
 		if event is InputEventMouseButton and event.get_button_index() == 1:
 			if not event.is_pressed() and (rotating or rotating_alt or translating):
 				emit_signal("moved")
@@ -134,6 +135,8 @@ func set_selected(select: bool):
 			var material = SpatialMaterial.new()
 			material.albedo_color = Color.blue
 			mod.material_override = material
+
+
 
 func solve(offset = null):
 	if offset != null:

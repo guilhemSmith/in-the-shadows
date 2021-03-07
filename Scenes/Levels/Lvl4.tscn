@@ -16,7 +16,7 @@ offset_margin = 0.2
 [node name="PuzzlePrim" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5 )
 mesh = ExtResource( 5 )
-rot_margin = 0.005
+rot_margin = 0.02
 euler_start = Vector3( -1.804, -1.099, 0.963 )
 h_scale = 0.003
 v_scale = 0.06
@@ -27,7 +27,7 @@ t_limit_y = 1.5
 [node name="PuzzleSec" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5 )
 mesh = ExtResource( 4 )
-rot_margin = 0.005
+rot_margin = 0.02
 euler_start = Vector3( -0.496, 0.281, -0.609 )
 euler_goal2 = Vector3( 0, 0, 3.14 )
 h_scale = 0.003

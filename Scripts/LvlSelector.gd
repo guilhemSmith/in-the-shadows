@@ -31,6 +31,7 @@ func enable(val):
 		selected_cube.select(false)
 		selected_cube = get_child(0)
 		selected_cube.select(true)
+		emit_signal("new_title", get_title())
 
 func unlock_lvl(lvl):
 	for cube in get_children():
