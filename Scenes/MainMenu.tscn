@@ -462,7 +462,7 @@ spot_angle = 10.0
 spot_angle_attenuation = 1.31951
 
 [node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( 0.88658, 0, 0.462574, 0, 1, 0, -0.462574, 0, 0.88658, 0, 0, 0 )
+transform = Transform( -0.474191, 0, -0.880421, 0, 1, 0, 0.880421, 0, -0.474191, 0, 0, 0 )
 mesh = SubResource( 17 )
 material/0 = ExtResource( 2 )
 
