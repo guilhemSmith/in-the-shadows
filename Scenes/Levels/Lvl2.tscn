@@ -14,7 +14,7 @@ tuto_current = 2
 
 [node name="PuzzlePiece" parent="." instance=ExtResource( 3 )]
 mesh = ExtResource( 1 )
-rot_margin = 0.01
+rot_margin = 0.05
 euler_start = Vector3( 0, 1.169, 0.393 )
 euler_goal = Vector3( 1.56, 2.59, 2.58 )
 euler_goal2 = Vector3( 1.56, 1.74, -1.51 )

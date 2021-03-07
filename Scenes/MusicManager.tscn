@@ -1,13 +1,125 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/MusicManager.gd" type="Script" id=1]
 [ext_resource path="res://Musics/Meydän - Insignifiant.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Musics/Meydän - Sometimes.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Musics/Meydän - Sense.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Textures/Volume.png" type="Texture" id=5]
+[ext_resource path="res://Textures/VolumeStop.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Start"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/VolumeButton:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, -2.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_ready"
+} ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Stop"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/VolumeButton:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -2.0, -80.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
+} ]
+}
 
 [node name="MusicManager" type="AudioStreamPlayer"]
 pause_mode = 2
 volume_db = -2.0
 script = ExtResource( 1 )
 musics = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Start = SubResource( 2 )
+anims/Stop = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolumeButton" type="TextureButton" parent="CanvasLayer/Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="finished" from="." to="." method="_on_MusicManager_finished"]
+[connection signal="pressed" from="CanvasLayer/Control/VolumeButton" to="." method="_on_VolumeButton_pressed"]
