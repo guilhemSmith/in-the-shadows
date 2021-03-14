@@ -6,6 +6,8 @@ signal started_first_rot
 signal started_second_rot
 signal started_trans
 
+enum GoalAxis { All, Up, Forward }
+
 var already_first_rot = false
 var dist_first_rot = 0
 
@@ -18,13 +20,11 @@ var dist_trans = 0
 export var mesh: Resource = null setget set_mesh
 
 var rot_basis: Basis = Basis(Quat.IDENTITY)
-export var rot_margin: float = 0.002
 
 export var euler_start: Vector3 = Vector3(0, 0, 0) setget set_euler_start
-export var euler_goal: Vector3 = Vector3(0, 0, 0)
-export var euler_goal2: Vector3 = Vector3(0, 0, 0)
-onready var quat_goal : Quat = Quat(euler_goal)
-onready var quat_goal2 : Quat = Quat(euler_goal2)
+export(Array, Basis) var goals = [Basis()]
+export(GoalAxis) var goal_axis = GoalAxis.All
+export var goal_margin: float = 0.1
 
 export var enable_horizontal: bool = true
 export var h_scale: float = 0.002
@@ -75,10 +75,9 @@ func _input(event):
 
 	if selected:
 #		if event.is_action_pressed("dev_debug"):
-#			print("DEBUGING")
-#			print("EULER: ", rot_basis.get_rotation_quat().get_euler())
-#			print("QUAT: ", rot_basis.get_rotation_quat())
-#			print(quat_goal2.get_euler())
+#			print("x rot: ", rot_basis.x, goals[0].x)
+#			print("y rot: ", rot_basis.y, goals[0].y)
+#			print("z rot: ", rot_basis.z, goals[0].z)
 		if event is InputEventMouseButton and event.get_button_index() == 1:
 			if not event.is_pressed() and (rotating or rotating_alt or translating):
 				emit_signal("moved")
@@ -137,22 +136,37 @@ func set_selected(select: bool):
 			mod.material_override = material
 
 
-
 func solve(offset = null):
 	if offset != null:
 		t_offset = offset
-	var current_quat = rot_basis.get_rotation_quat()
-	if (current_quat - quat_goal).length_squared() < (current_quat - quat_goal2).length_squared():
-		rot_basis = Basis(quat_goal)
-	else:
-		rot_basis = Basis(quat_goal2)
+	for goal in goals:
+		if goal_valid(goal):
+			rot_basis = goal
+			return
+
+func goal_valid(goal):
+	var inv_basis = rot_basis.inverse()
+	var inv_goal = goal.inverse()
+	match goal_axis:
+		GoalAxis.All:
+			var x_dist = (inv_basis.x - inv_goal.x).length()
+			var y_dist = (inv_basis.y - inv_goal.y).length()
+			var z_dist = (inv_basis.z - inv_goal.z).length()
+			return (x_dist + y_dist + z_dist) < goal_margin * 3
+		GoalAxis.Up:
+			var x_dist = (inv_basis.x - inv_goal.x).length()
+			var z_dist = (inv_basis.z - inv_goal.z).length()
+			return (x_dist + z_dist) < goal_margin * 2
+		GoalAxis.Forward:
+			var z_dist = (inv_basis.z - inv_goal.z).length()
+			return z_dist < goal_margin * 2
+	return false
 
 func is_valid():
-	var current_quat = rot_basis.get_rotation_quat()
-	return (
-		(current_quat - quat_goal).length_squared() < rot_margin
-		or (current_quat - quat_goal2).length_squared() < rot_margin
-	)
+	for goal in goals:
+		if goal_valid(goal):
+			return true
+	return false
 
 func set_mesh(new_mesh):
 	mesh = new_mesh

@@ -9,6 +9,7 @@ func _ready():
 
 func validation():
 	var offset = $PuzzleSec.t_offset - $PuzzlePrim.t_offset
+#	print($PuzzlePrim.is_valid(), $PuzzleSec.is_valid())
 	if $PuzzlePrim.is_valid() and $PuzzleSec.is_valid() and (offset_goal - offset).length() < offset_margin:
 		$PuzzlePrim.solve(-offset_goal / 2)
 		$PuzzlePrim.set_selected(false)

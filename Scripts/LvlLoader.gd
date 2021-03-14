@@ -29,7 +29,9 @@ func _on_PauseMenu_quit_order():
 	var root = get_tree().root
 	var music = get_node("MusicManager")
 	remove_child(music)
-	instance.get_node("MusicManager").replace_by(music)
+	var old_music = instance.get_node("MusicManager")
+	old_music.replace_by(music)
+	old_music.queue_free()
 	instance.tuto = tuto_state
 	root.remove_child(self)
 	root.add_child(instance)

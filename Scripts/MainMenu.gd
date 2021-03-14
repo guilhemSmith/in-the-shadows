@@ -82,7 +82,9 @@ func _on_Lvl_timeout():
 	var music = $MusicManager
 	root.remove_child(self)
 	remove_child(music)
-	instance.get_node("MusicManager").replace_by(music)
+	var old_music = instance.get_node("MusicManager")
+	old_music.replace_by(music)
+	old_music.queue_free()
 	instance.lvl_index = next_lvl
 	instance.tuto_state = tuto
 	root.add_child(instance)

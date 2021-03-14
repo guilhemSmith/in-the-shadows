@@ -14,10 +14,9 @@ tuto_current = 2
 
 [node name="PuzzlePiece" parent="." instance=ExtResource( 3 )]
 mesh = ExtResource( 1 )
-rot_margin = 0.05
 euler_start = Vector3( 0, 1.169, 0.393 )
-euler_goal = Vector3( 1.56, 2.59, 2.58 )
-euler_goal2 = Vector3( 1.56, 0.02, 3.06 )
+goals = [ Basis( 0.997, -0.012, -0.101, -0.101, -0.026, -0.995, 0.009, 1, -0.027 ), Basis( -0.993, -0.103, 0.059, -0.057, -0.022, -0.998, 0.104, -0.994, 0.016 ) ]
+goal_margin = 0.2
 h_scale = 0.003
 enable_translations = false
 

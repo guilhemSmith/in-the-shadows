@@ -462,7 +462,7 @@ spot_angle = 10.0
 spot_angle_attenuation = 1.31951
 
 [node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( 0.825168, 0, 0.564888, 0, 1, 0, -0.564888, 0, 0.825168, 0, 0, 0 )
+transform = Transform( 0.397696, 0, 0.917518, 0, 1, 0, -0.917518, 0, 0.397696, 0, 0, 0 )
 mesh = SubResource( 17 )
 material/0 = ExtResource( 2 )
 
@@ -512,7 +512,7 @@ __meta__ = {
 margin_left = 150.0
 margin_top = 100.0
 margin_right = 1130.0
-margin_bottom = 680.0
+margin_bottom = 620.0
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]

@@ -17,10 +17,9 @@ offset_margin = 0.2
 [node name="PuzzlePrim" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.208, -0.163, 0 )
 mesh = ExtResource( 5 )
-rot_margin = 0.01
 euler_start = Vector3( -0.553, -1.013, -0.61 )
-euler_goal = Vector3( -1.5, 0, 0 )
-euler_goal2 = Vector3( -1.5, 3.14, 0 )
+goals = [ Basis( 0.991, -0.117, 0.061, -0.071, -0.085, 0.993, -0.111, -0.989, -0.093 ), Basis( -0.996, 0.005, 0.09, 0.089, 0.026, 0.996, 0.002, 1, -0.027 ) ]
+goal_margin = 0.3
 h_scale = 0.003
 v_scale = 0.06
 t_offset = Vector3( -0.208, -0.163, 0 )
@@ -30,10 +29,10 @@ t_limit_y = 1.5
 [node name="PuzzleSec" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591, 0.527, 0 )
 mesh = ExtResource( 4 )
-rot_margin = 0.5
 euler_start = Vector3( 0, -0.764, -0.164 )
-euler_goal = Vector3( 0, 1.5, 1.5 )
-euler_goal2 = Vector3( 0, 1.5, -1.5 )
+goals = [ Basis( 0.256, -0.099, 0.961, 0.964, -0.046, -0.261, 0.071, 0.994, 0.083 ), Basis( 0.363, -0.038, 0.931, -0.932, -0.016, 0.363, 0.001, -0.999, -0.041 ) ]
+goal_axis = 2
+goal_margin = 0.3
 h_scale = 0.003
 v_scale = 0.06
 t_offset = Vector3( 0.591, 0.527, 0 )
